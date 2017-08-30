@@ -1,0 +1,7 @@
+{
+    "name": "protractor-example",
+    "dependencies": {},
+    "devDependencies": {
+        "protractor": "^4.0.9"
+    }
+}

@@ -1,0 +1,61 @@
+#recommendation{
+	width: 100%;
+}
+#name{
+	display:inline-block;
+	width:100%;
+}
+#perproposition{
+	width: 30%;
+	display: inline-block;
+	border-bottom: 4px solid grey;
+	padding-left: 10px;
+	margin-right:-5px;
+}
+#overtime{
+	width: 68%;
+	background-color:#F9F9F9;
+	border-bottom: 4px solid grey;
+	display: inline-block;
+	text-align: center;
+}
+#graphs{
+	display:inline-block;
+}
+#barchart_material{
+	width: 380px; 
+	height: 400px;
+}
+#barchart_material1{
+	width: 500px; 
+	height: 400px;
+	float:left;
+}
+#piechart{
+	width: 300px; 
+	height: 250px;
+	float:right;
+	margin-top:100px;
+	margin-right:20px;
+}
+#legend1{
+	margin-left:0px;
+	padding-top:20px;
+	width:380px;
+}
+#legend2{
+	margin-left:10px;
+	padding-top:20px
+	;width:300px;
+}
+#block1{
+	display: inline-block;
+	width: 30%;
+	margin-right:-5px;
+}
+#block2{
+	display: inline-block;
+	margin-left:10px;
+	width: 68%;
+	background-color:#F9F9F9;
+}

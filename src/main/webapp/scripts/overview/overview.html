@@ -1,0 +1,17 @@
+<div>
+	<div id="overview">
+		<div ui-sref="performance">Performance Overview</div>
+		<div ui-sref="recommendation">Recommendation Overview</div>
+		<div ui-sref="mau">MAU vs Competitors</div>
+		<div ui-sref="scale">Scale Overview</div>
+	</div>
+
+	<div id="chart"><h5>Color legend</h5>
+		<table id="legend">
+		    <tr><th>Month-17</th><th>&nbsp;&nbsp;&Delta;&nbsp;&nbsp;&nbsp;&nbsp;</th></tr>
+		    <tr><td>Missed target</td><td>Sign.worse</td></tr>
+		    <tr><td>Met target</td><td>Sign better</td></tr>
+		</table>
+	</div>
+</div>
+<div id="nested" ui-view="nested"></div>
