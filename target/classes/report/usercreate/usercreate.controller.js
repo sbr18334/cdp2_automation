@@ -11,13 +11,8 @@ angular.module('app')
                     }
                 },
                 data: {
-                      css: [
-                        'scripts/report/usercreate/usercreate.css',
-                        {
-                          name: 'usercreate',
-                          href: 'report/usercreate/usercreate.css'
-                        }
-                      ]
+                      css: 
+                        'scripts/report/usercreate/usercreate.css'
                 },
                 resolve: {
 

@@ -11,13 +11,8 @@ angular.module('app')
                     }
                 },
                 data: {
-                      css: [
-                        'scripts/overview/scale/scale.css',
-                        {
-                          name: 'scale',
-                          href: 'overview/scale/scale.css'
-                        }
-                      ]
+                      css: 
+                        'scripts/overview/scale/scale.css'
                 },
                 resolve: {
 

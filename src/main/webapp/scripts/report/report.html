@@ -4,7 +4,7 @@
     	<select ng-options="option.name for option in month.availableOptions track by option.id" ng-model="month.selectedOption">
     	</select>
     </div>
-	<div id="download"><i class="fa fa-download" aria-hidden="true"></i></div>
+	<div id="download" ng-click="print()"><i class="fa fa-download" aria-hidden="true"></i></div>
 </div>
 <div id="admin" ui-view="nested">
 	<div style="margin-top:10px;">

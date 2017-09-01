@@ -1,8 +1,8 @@
 angular.module('app')
 .controller('PerformanceOvController',function($scope,$window,$http,$state){
 
-	$('#overview div:first-child').css('background-color','green');
-	$('#overview div:not(:nth-child(1))').css('background-color','black');
+	$('#overview div:first-child').css('background-color','black');
+	$('#overview div:not(:nth-child(1))').css('background-color','#2C5757');
 
 	$('#chart').show();
 

@@ -10,13 +10,8 @@ angular.module('app')
                     }
                 },
                 data: {
-                      css: [
-                        'scripts/overview/overview.css',
-                        {
-                          name: 'overview',
-                          href: 'overview/overview.css'
-                        }
-                      ]
+                      css: 
+                        'scripts/overview/overview.css'
                 },
                 resolve: {
 

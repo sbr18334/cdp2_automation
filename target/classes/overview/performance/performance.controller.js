@@ -11,13 +11,8 @@ angular.module('app')
                     }
                 },
                 data: {
-                      css: [
-                        'scripts/overview/performance/performance.css',
-                        {
-                          name: 'performance',
-                          href: 'overview/performance/performance.css'
-                        }
-                      ]
+                      css: 
+                        'scripts/overview/performance/performance.css'
                 },
                 resolve: {
 

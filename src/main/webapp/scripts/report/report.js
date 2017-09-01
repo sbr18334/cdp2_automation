@@ -49,4 +49,8 @@ angular.module('app')
     $scope.del = function(item){
     	$('.'+item).hide();
     }
+    
+    $scope.print = function(){
+    	window.print();
+    }
 });

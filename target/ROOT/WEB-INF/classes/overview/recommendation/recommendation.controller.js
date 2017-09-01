@@ -11,13 +11,8 @@ angular.module('app')
                     }
                 },
                 data: {
-                      css: [
-                        'scripts/overview/recommendation/recommendation.css',
-                        {
-                          name: 'recommendation',
-                          href: 'overview/recommendation/recommendation.css'
-                        }
-                      ]
+                      css: 
+                        'scripts/overview/recommendation/recommendation.css'
                 },
                 resolve: {
 

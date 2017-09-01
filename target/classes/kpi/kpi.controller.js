@@ -10,13 +10,8 @@ angular.module('app')
                     }
                 },
                 data: {
-                      css: [
-                        'scripts/kpi/kpi.css',
-                        {
-                          name: 'kpi',
-                          href: 'kpi/kpi.css'
-                        }
-                      ]
+                      css: 
+                        'scripts/kpi/kpi.css'
                 },
                 resolve: {
 

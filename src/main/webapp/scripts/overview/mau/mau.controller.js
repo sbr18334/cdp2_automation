@@ -11,13 +11,8 @@ angular.module('app')
                     }
                 },
                 data: {
-                      css: [
-                        'scripts/overview/mau/mau.css',
-                        {
-                          name: 'mau',
-                          href: 'overview/mau/mau.css'
-                        }
-                      ]
+                      css: 
+                        'scripts/overview/mau/mau.css'
                 },
                 resolve: {
 

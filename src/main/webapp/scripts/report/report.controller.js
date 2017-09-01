@@ -10,13 +10,8 @@ angular.module('app')
                     }
                 },                
                 data: {
-                      css: [
-                        'scripts/report/report.css',
-                        {
-                          name: 'report',
-                          href: 'report/report.css'
-                        }
-                      ]
+                      css: 
+                    	  'scripts/report/report.css'
                 },
                 resolve: {
 

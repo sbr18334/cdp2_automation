@@ -1,8 +1,8 @@
 angular.module('app')
 .controller('ScaleOvController',function($scope,$window,$http,$state){
 
-	$('#overview div:nth-child(4)').css('background-color','green');
-	$('#overview div:not(:nth-child(4))').css('background-color','black');
+	$('#overview div:nth-child(4)').css('background-color','black');
+	$('#overview div:not(:nth-child(4))').css('background-color','#2C5757');
 
 	$('#chart').hide();
 	
@@ -25,7 +25,7 @@ angular.module('app')
           title: '..'
         },
         chartArea:{left:100,right:20,width:"70%",height:"100%"},
-        backgroundColor: '#204C90',
+        backgroundColor: '#156CA1',
         colors: ['white','#D3D8DC'],
         hAxis: {
             textStyle:{color: 'white'}
