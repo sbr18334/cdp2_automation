@@ -29,7 +29,7 @@ body{
 	background-color: #033756;
 	color: white;
 	display: inline-block;
-	margin-bottom: 30px;
+	margin-bottom: 15px;
 }
 #title{
 	top: -20px;
@@ -92,7 +92,7 @@ body{
 	background-color: white;
 	width:1450px;
 	border-top:2px solid #107ABA;
-	margin: 20px 0px 100px 1.5%;
+	margin: 15px 0px 100px 1.5%;
 }
 #footer{
 	margin: auto;

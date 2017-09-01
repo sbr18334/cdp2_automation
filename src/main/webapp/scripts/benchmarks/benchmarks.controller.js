@@ -10,13 +10,8 @@ angular.module('app')
                     }
                 },
                 data: {
-                      css: [
-                        'scripts/benchmarks/benchmarks.css',
-                        {
-                          name: 'benchmarks',
-                          href: 'benchmarks/benchmarks.css'
-                        }
-                      ]
+                      css: 
+                        'scripts/benchmarks/benchmarks.css'
                 },
                 resolve: {
 

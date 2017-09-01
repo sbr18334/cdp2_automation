@@ -2,8 +2,13 @@ angular.module('app')
 .controller('usercreateController',function($scope,$window,$http,$state){
 	
 	$scope.user=sessionStorage.getItem('user');
-	if($scope.user!='admin'){
-		$state.go('report');
+	if($scope.user !=null){
+		if($scope.user!='admin'){
+			$state.go('report');
+		}
+	}
+	else{
+		document.location.href = "scripts/login/login.html";
 	}
 	$scope.createuser = function(){
 		alert("User has been created succesfully");

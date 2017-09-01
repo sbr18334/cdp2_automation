@@ -1,8 +1,8 @@
 angular.module('app')
 .controller('MauOvController',function($scope,$window,$http,$state){
 
-	$('#overview div:nth-child(3)').css('background-color','green');
-	$('#overview div:not(:nth-child(3))').css('background-color','black');
+	$('#overview div:nth-child(3)').css('background-color','black');
+	$('#overview div:not(:nth-child(3))').css('background-color','#2C5757');
 
 	$('#chart').hide();
 	

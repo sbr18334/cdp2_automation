@@ -42,6 +42,7 @@ angular.module('app')
     }
     $scope.view = function(){
       // $('#graphs').show()
+    location.reload();
     $('#graphs').css('opacity','1');
     $('#view').css('border-bottom','3px solid green');
     $('#view').css('font-weight','bold');
