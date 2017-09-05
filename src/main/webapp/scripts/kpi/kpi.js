@@ -1,7 +1,7 @@
 angular.module('app')
 .controller('KpiController',function($scope,$window,$http,$state,$compile){
 
-	  $('#tabs div:nth-child(2)').css('background-color','#EAEEE9');
+	$('#tabs div:nth-child(2)').css('background-color','#EAEEE9');
     $('#tabs div:nth-child(2)').css('color','#107ABA');
     $('#tabs div:not(:nth-child(2))').css('background-color','#107ABA');
     $('#tabs div:not(:nth-child(2))').css('color','#EAEEE9');
