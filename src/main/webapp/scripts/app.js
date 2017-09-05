@@ -12,6 +12,9 @@ angular.module('app',['ui.router',"uiRouterStyles"])
 	}
 	
 
+	$scope.print = function(){
+		window.print();
+	}
 	
 	$scope.logout = function(){
 		sessionStorage.removeItem('user');
@@ -19,4 +22,5 @@ angular.module('app',['ui.router',"uiRouterStyles"])
 	}
   //alert($(window).width());
 
-});
+})
+

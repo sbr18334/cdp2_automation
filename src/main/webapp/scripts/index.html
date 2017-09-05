@@ -32,6 +32,8 @@
     <script type="text/javascript" src="scripts/overview/mau/mau.controller.js"></script>
     <script type="text/javascript" src="scripts/overview/scale/scale.js"></script>
     <script type="text/javascript" src="scripts/overview/scale/scale.controller.js"></script>
+    <script type="text/javascript" src="scripts/error/error.controller.js"></script>
+    <script type="text/javascript" src="scripts/error/error.js"></script>
 </head>
 <body ng-controller="MainController" ui-router-styles>
 <div id="display">
@@ -43,12 +45,12 @@
             <div id="icons">
                 <div ui-sref="performance"><i class="fa fa-home fa-lg" aria-hidden="true"></i></div>
                 <div><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></div>
-                <div><i class="fa fa-print fa-lg" aria-hidden="true"></i></div>
+                <div ng-click="print()"><i class="fa fa-print fa-lg" aria-hidden="true"></i></div>
                 <div ng-click="logout()"><i class="fa fa-power-off fa-lg" aria-hidden="true"></i></div>
             </div>
         </div>
     </div>
-	<div id="info">
+	<div id="info" ui-view="error">
     	<div id="tabs">
     		<div ui-sref="performance">Overview</div>
     		<div ui-sref="kpi">KPI</div>
