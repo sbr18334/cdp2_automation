@@ -3,7 +3,7 @@ angular.module('app',['ui.router',"uiRouterStyles"])
 	
 	$('#display').css('display','none');
 
-	if(sessionStorage.user == null){
+	if(localStorage.user == null){
 		document.location.href = "scripts/login/login.html";
 	}
 	else{
@@ -17,7 +17,7 @@ angular.module('app',['ui.router',"uiRouterStyles"])
 	}
 	
 	$scope.logout = function(){
-		sessionStorage.removeItem('user');
+		localStorage.removeItem('user');
 		document.location.href = "scripts/login/login.html";
 	}
   //alert($(window).width());
