@@ -14,7 +14,7 @@ $(function(){            //to trigger login on enter
 $scope.homePage=function(){
    if(document.getElementById('login_field').value=="admin" && document.getElementById('password_field').value=="admin"
 	   || document.getElementById('login_field').value=="user" && document.getElementById('password_field').value=="user"){
- 	  sessionStorage.user = document.getElementById('login_field').value;
+	  localStorage.user = document.getElementById('login_field').value;
  	  window.location.href="/#/overview"
  } else{
  	alert("Invalid Credentials")
