@@ -51,6 +51,11 @@ angular.module('app')
     }
     
     $scope.print = function(){
-    	window.print();
+    	$http({
+    	      method : 'GET',
+    	      url:'/download'
+    	}).then(function(response) {
+    		alert("hi");
+    	})
     }
 });

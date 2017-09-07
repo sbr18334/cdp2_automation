@@ -25,15 +25,17 @@ public class JsonWriter extends HttpServlet  {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String summary = req.getParameter("summary").toString();
         String details = req.getParameter("details").toString();
-        String metric = req.getParameter("metric").toString();
-
+        //String metric = req.getParameter("metric").toString();
+        
+        System.out.println("summary"+summary);
+        
 		try{
 			JSONObject jsonObject = new JSONObject();
 			String path=getServletContext().getRealPath("/resources/data.json");
 		    // Add the values to the jsonObject
 		    jsonObject.put("summary", summary);
 		    jsonObject.put("details", details);
-		    jsonObject.put("metric", metric);
+		    //jsonObject.put("metric", metric);
 
 		    // Create a new FileWriter object
 		    File f = new File("test.json");

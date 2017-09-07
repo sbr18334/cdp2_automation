@@ -64,8 +64,8 @@ angular.module('app')
         url: '/Suggestions',
         params: {
           summary: $scope.data1,
-          details: $scope.data2,
-          metric: $scope.metric
+          details: $scope.data2
+          //metric: $scope.metric
         }
       }).then(function(response){
     	  
