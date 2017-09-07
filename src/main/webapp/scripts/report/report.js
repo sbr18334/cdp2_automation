@@ -29,7 +29,7 @@ angular.module('app')
     	$scope.table = false;
     }
     //$scope.user = 'admin';
-    $scope.user = sessionStorage.getItem('user');
+    $scope.user = localStorage.getItem('user');
     //sessionStorage.setItem('user',$scope.user);
     
     //edit
@@ -51,6 +51,11 @@ angular.module('app')
     }
     
     $scope.print = function(){
-    	window.print();
+    	$http({
+    	      method : 'GET',
+    	      url:'/download'
+    	}).then(function(response) {
+    		alert("hi");
+    	})
     }
 });

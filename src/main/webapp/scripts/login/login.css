@@ -119,3 +119,9 @@
     background-color: #0083D0;
     cursor:pointer;
   }
+  #error_msg{
+  	margin: 0 auto 8px auto;
+  	background-color : #E72525;
+  	width: 290px;
+  	padding : 5px;
+  }

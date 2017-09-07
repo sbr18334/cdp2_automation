@@ -7,6 +7,16 @@
    <version>1.0-SNAPSHOT</version>
    <name>Dashboard Maven Webapp</name>
    <url>http://maven.apache.org</url>
+   <repositories>
+   <repository>
+	<id>mashape-snapshots</id>
+	<url>http://maven.mashape.com/snapshots</url>
+</repository>
+<repository>
+	<id>mashape-releases</id>
+	<url>http://maven.mashape.com/releases</url>
+</repository>
+   </repositories>
    <dependencies>
       <dependency>
          <groupId>junit</groupId>
@@ -43,8 +53,12 @@
 	        <artifactId>tomcat-servlet-api</artifactId>
 	        <version>8.5.12</version>
 	        <scope>provided</scope>
-	    </dependency>
-	
+	</dependency>
+    <dependency>
+        <groupId>com.pdfcrowd</groupId>
+        <artifactId>pdfcrowd</artifactId>
+        <version>2.6</version>
+    </dependency>
 	<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
 	<dependency>
 	    <groupId>com.googlecode.json-simple</groupId>

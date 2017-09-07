@@ -1,7 +1,7 @@
 angular.module('app')
 .controller('KpiController',function($scope,$window,$http,$state,$compile){
 
-	  $('#tabs div:nth-child(2)').css('background-color','#EAEEE9');
+	$('#tabs div:nth-child(2)').css('background-color','#EAEEE9');
     $('#tabs div:nth-child(2)').css('color','#107ABA');
     $('#tabs div:not(:nth-child(2))').css('background-color','#107ABA');
     $('#tabs div:not(:nth-child(2))').css('color','#EAEEE9');
@@ -64,8 +64,8 @@ angular.module('app')
         url: '/Suggestions',
         params: {
           summary: $scope.data1,
-          details: $scope.data2,
-          metric: $scope.metric
+          details: $scope.data2
+          //metric: $scope.metric
         }
       }).then(function(response){
     	  

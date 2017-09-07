@@ -1,7 +1,7 @@
 angular.module('app')
 .controller('usercreateController',function($scope,$window,$http,$state){
 	
-	$scope.user=sessionStorage.getItem('user');
+	$scope.user=localStorage.getItem('user');
 	if($scope.user !=null){
 		if($scope.user!='admin'){
 			$state.go('report');

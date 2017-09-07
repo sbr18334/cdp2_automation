@@ -3,6 +3,15 @@ body{
 	font-family: calibri;
 	min-width: 1500px;
 }
+#msg{
+	position: fixed;
+	top: 3%;
+	right: 4%;
+	background-color: white;
+	padding: 10px 15px 10px 15px;
+	border: 1px solid black;
+	border-radius: 5px;
+}
 #icons{
 	position: relative;
 	top: -20px;
@@ -191,7 +200,7 @@ body::-webkit-scrollbar-thumb {
     #info #content #suggestions{width:445px;}
     #graphs #block2 #piechart{display: none;}
 }
-@media screen and (min-width: 876px) and (max-width: 1021px) {
+/*@media screen and (min-width: 876px) and (max-width: 1021px) {
 	#philips,#cdp2{display: none;}
 	#title{top:10px;margin-left: 40px;}
 	#icons{top:10px;margin-left: 310px;}
@@ -203,5 +212,5 @@ body::-webkit-scrollbar-thumb {
 	#content #nested{margin-top: 20px;}
 	#nested th{padding: 7px;}
 	#footer{padding-left: 23%;}
-}
+}*/
 /*css resolution*/

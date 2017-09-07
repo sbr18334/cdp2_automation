@@ -18,11 +18,13 @@
   </div>
   <!-- <img class="img" src="../src/main/webapp/assets/cdp2_logo.png"></img> -->
   <h1><span class="descriptor">CDP2-</span><span class="descriptor">Analytics</span></h1>
-    <form class="form">
-      <input type="text" id="login_field" placeholder="Username" minlength="1">
-      <input type="password" id="password_field" placeholder="Password" minlength="1">
-      <input type="button" id="login-button" ng-click="homePage()" value="Log-In"></input>
+    <form class="form" ng-submit="homePage()">
+      <input type="text" id="login_field" ng-model="username" placeholder="Username" required ng-click="error()">
+      <input type="password" id="password_field" ng-model="password" placeholder="Password" required ng-click="error()">
+      <input type="submit" id="login-button" value="Log-In"></input>
     </form>
+  <!-- <div><a href="/#/forgotpassword">Forgot Password</a></div>  -->
+  <div id="error_msg">Incorrect credentials</div>
 
 <div style="text-align: center;  border:1px solid #003478; background-color: #003464; font-size:12px; padding:15px 0px 15px 0px;  margin-top: 330px;  box-sizing: border-box;line-height: 1.7em">
 Copyright © Koninklijke Philips Electronics N.V.<br>
