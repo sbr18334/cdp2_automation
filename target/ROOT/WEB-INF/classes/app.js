@@ -13,6 +13,7 @@ angular.module('app',['ui.router',"uiRouterStyles"])
 	
 	if($location.path() == ""){
 		$location.path('/overview/performance');
+		alert('hi');
 	}
 
 	$scope.print = function(){
