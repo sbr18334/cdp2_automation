@@ -1,8 +1,8 @@
 angular.module('app',['ui.router',"uiRouterStyles"])
-.controller('MainController',function($scope,$window,$http,$state){
+.controller('MainController',function($scope,$window,$http,$state,$location){
 	
 	$('#display').css('display','none');
-
+	
 	if(localStorage.user == null){
 		document.location.href = "scripts/login/login.html";
 	}
@@ -11,6 +11,9 @@ angular.module('app',['ui.router',"uiRouterStyles"])
 		$('#display').css('display','block');
 	}
 	
+	if($location.path() == ""){
+		$location.path('/overview/performance');
+	}
 
 	$scope.print = function(){
 		window.print();
@@ -21,6 +24,4 @@ angular.module('app',['ui.router',"uiRouterStyles"])
 		document.location.href = "scripts/login/login.html";
 	}
   //alert($(window).width());
-
-})
-
+});
