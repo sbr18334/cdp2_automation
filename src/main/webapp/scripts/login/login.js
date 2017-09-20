@@ -2,6 +2,8 @@
 angular.module('app',[])
   .controller('LoginController', function ($scope) {
 	  
+	  $(".loader").hide();
+	  
 	  if(localStorage.user !=null){
 		  $(".bg-wrapper").hide();
 		  window.location.href="/#/overview"
@@ -25,6 +27,8 @@ angular.module('app',[])
 	  $scope.homePage=function(){
 		  if(document.getElementById('login_field').value=="admin" && document.getElementById('password_field').value=="admin"
 		   || document.getElementById('login_field').value=="user" && document.getElementById('password_field').value=="user"){
+			  $(".loader").show();
+			  $('.bg-wrapper').hide();
 			  localStorage.user = document.getElementById('login_field').value;
 	 	  	  window.location.href="/#/overview";
 	 	  	  }
