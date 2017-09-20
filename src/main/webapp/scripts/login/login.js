@@ -11,9 +11,13 @@ angular.module('app',[])
 	  
 	  $('#error_msg').hide();
 		
-	  $scope.error = function(){
+	  $('#login_field').on('input',function(e){
 		  $('#error_msg').hide();
-		  }
+		  });
+	  
+	  $('#password_field').on('input',function(e){
+		  $('#error_msg').hide();
+		  });
 	    
 	  $(function(){
 		  $('#password_field').keypress(function (e) {
