@@ -125,3 +125,10 @@
   	width: 290px;
   	padding : 5px;
   }
+  
+ .loader {
+ 	margin-top: -12%;
+ 	padding: 30%;
+ 	color: white;
+ 	text-align: center;
+ }
