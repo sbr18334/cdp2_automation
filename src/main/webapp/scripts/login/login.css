@@ -124,6 +124,18 @@
   	background-color : #E72525;
   	width: 290px;
   	padding : 5px;
+  	margin-bottom: 20px;
+  }
+  #forgot_password{
+  	margin: 0 auto 8px auto;
+  	width: 290px;
+  	padding : 5px;
+  	margin-top: 100px;
+  }
+  #forgot_password a{
+  	font-weight: bold;
+  	color: darkgray;
+  	margin-left: 25px;
   }
   /*custom scrollbar*/
 body::-webkit-scrollbar {

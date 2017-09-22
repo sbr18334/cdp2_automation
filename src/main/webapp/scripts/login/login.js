@@ -18,6 +18,10 @@ angular.module('app',[])
 	  $('#password_field').on('input',function(e){
 		  $('#error_msg').hide();
 		  });
+	  
+	  $scope.forgotPassword = function(){
+		  document.location.href="../password/password.html";
+	  }
 	    
 	  $(function(){
 		  $('#password_field').keypress(function (e) {
