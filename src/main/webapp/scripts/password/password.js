@@ -12,5 +12,4 @@ angular.module('app',[])
 	  $scope.homePage=function(){
 		  $('#success').show();
 	  };
-	  
   });

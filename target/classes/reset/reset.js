@@ -4,7 +4,7 @@ angular.module('app',[])
 	  $('#success').hide();
 	  $('#error').hide();
 	  
-	  $('#login_field').on('input',function(e){
+	  $('input').on('input',function(e){
 		  $('#success').hide();
 		  $('#error').hide();
 	  });
@@ -19,5 +19,4 @@ angular.module('app',[])
 			  $('#success').show();
 		  }
 	  };
-	  
   });
