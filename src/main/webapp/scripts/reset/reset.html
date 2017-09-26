@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="../login/login.css">
+  <link rel="stylesheet" href="../password/password.css">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script type="text/javascript" src="reset.js"></script>
+  <style>
+  </style>
+</head>
+
+<body ng-controller="ResetController">
+<div class="bg-wrapper">
+  <div class="shield-container">
+  </div>
+   <h4><span class="descriptor">Enter Your New Password</span></h4> 
+    <form class="form" ng-submit="homePage()">
+      <input type="text" id="login_field" ng-model="password1" placeholder="Password" required></input>
+      <input type="text" id="login_field" ng-model="password2" placeholder="Re-Enter the Password" required></input>
+      <input type="submit" id="login-button" value="Update"></input>
+    </form>
+   <div id="success">Your password has been reset&nbsp;
+   <a href="../login/login.html">Click here</a>  to go back to the login page</div>
+   <div id="error">Passwords doesn't match</div>
+</body>
+</html>

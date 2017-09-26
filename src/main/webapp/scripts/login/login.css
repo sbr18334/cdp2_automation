@@ -120,6 +120,7 @@
     cursor:pointer;
   }
   #error_msg{
+  	border-radius: 5px;
   	margin: 0 auto 8px auto;
   	background-color : #E72525;
   	width: 290px;
@@ -155,7 +156,7 @@ body::-webkit-scrollbar-thumb {
 	background-color: silver;
 }
 /*custom scrollbar*/
-  
+
  .loader {
  	margin-top: -12%;
  	padding: 30%;
