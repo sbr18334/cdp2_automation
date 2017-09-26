@@ -13,11 +13,11 @@
 </servlet-mapping>
 
 <servlet>
-	<servlet-name>pdfWriter</servlet-name>
-	<servlet-class>pack.pdfWriter</servlet-class>
+	<servlet-name>Email</servlet-name>
+	<servlet-class>pack.Email</servlet-class>
 </servlet>
 <servlet-mapping>
-	<servlet-name>pdfWriter</servlet-name>
+	<servlet-name>Email</servlet-name>
 	<url-pattern>/download</url-pattern>
 </servlet-mapping> 
 
