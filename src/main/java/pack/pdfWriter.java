@@ -54,7 +54,7 @@ public class pdfWriter extends HttpServlet{
                 InternetAddress.parse(to));
             message.setSubject("Reset-Password link");
             message.setText("Dear User,"
-                + "\n\n Click on the following link to reset the password\n\n"
+                + "\n\nClick on the following link to reset the password\n\n"
             	+ config+"/scripts/reset/reset.html");
 
             Transport.send(message);
