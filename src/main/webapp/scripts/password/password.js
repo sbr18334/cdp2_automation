@@ -18,7 +18,7 @@ angular.module('app',[])
 	        	  email: $scope.username
 	          }
 	        }).then(function(response){
-	      	  console.log(respose);
+	      	  console.log(response);
 	        })
 		  $('#success').show();
 	  };
