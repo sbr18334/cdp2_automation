@@ -1,0 +1,52 @@
+#createuser{
+	font-size:32px;
+	background-color: #102145;
+	color:white;
+	margin: 20px 259px 0px 160px;
+	padding: 15px 0px 0px 40px;
+	height:60px; 
+	border-radius: 5px 5px 0px 0px;
+}
+table tr td:first-child{
+	text-align:right;
+	border-left:1px solid white;
+}
+table,tr,td{
+	border:1px solid white;
+	width: 60%;
+	margin-bottom: 20px;
+	margin-left: 1%;
+}
+select{
+	padding: 7px;
+	width: 250px;
+}
+input{
+	width: 100%;
+	border: 1px solid grey;
+}
+#button{
+	margin-top: 10px;
+	padding: 7px 22px 7px 22px;
+	background-color: #0A7017;
+	border: 0px;
+	width: 80px;
+	height: 30px;
+	color: white;
+	cursor: pointer;
+}
+form{
+	padding-top: 20px;
+	border: 1px solid black;
+	margin-left: 160px;
+	margin-right: 260px;
+	border-top: 0px;
+	border-radius: 0px 0px 5px 5px;
+}
+#report{
+	background-color: #F4F4F4;
+	border: 1px solid white;
+}
+#report #text{
+	color: black;
+}

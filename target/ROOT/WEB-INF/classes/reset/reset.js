@@ -1,5 +1,5 @@
 angular.module('app',[])
-  .controller('PasswordController', function ($scope) {
+  .controller('ResetController', function ($scope) {
 	  
 	  $('#success').hide();
 	  $('#error').hide();
@@ -10,7 +10,14 @@ angular.module('app',[])
 	  });
 	  
 	  $scope.homePage=function(){
-		  $('#success').show();
+		  if($scope.password1 != $scope.password2){
+			  $('#success').hide();
+			  $('#error').show();
+		  }
+		  else{
+			  $('#error').hide();
+			  $('#success').show();
+		  }
 	  };
 	  
   });

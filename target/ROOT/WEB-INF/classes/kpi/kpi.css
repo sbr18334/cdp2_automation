@@ -1,0 +1,121 @@
+table, th, td  {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 2px 10px 2px 10px;
+  background-color: white;
+  text-align: center;
+  margin:0px 0px 700px 30px;
+}
+th{
+	background-color: #107ABA;
+	border-bottom: 5px solid white;
+	border-right: 3px solid white;
+	color: white;
+}
+table tr td:first-child{
+	background-color: #107ABA;
+	border-right: 5px solid white;
+	padding-left: 10px; 
+	padding-right: 10px;
+}
+table, td{
+	border:2px solid white;
+	text-align: right;
+	padding: 6px 30px 6px 30px;
+    height:25px;
+}
+tr:nth-child(odd) td{background-color: #D3D3D3;}
+tr:nth-child(even) td{background-color: #A9A9A9;}
+
+table tr td:first-child+td{
+	text-align: left;
+	padding-left: 15px;
+}
+select{/*
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;*/
+    padding: 7px;
+}
+#slide{
+	display: inline-block;
+	position: absolute;
+	cursor: pointer;
+	width: 180px;
+	margin-left: 160px;
+	height: 20px;
+}
+#slide div{
+	display: inline;
+	height: 10px;
+	margin-right: 10px;
+	padding: 0px 5px 7px 5px;
+}
+#graphs{
+	display: inline-block;
+	margin-left: 163px;
+}
+#draw_pie{
+	display:inline-block;
+	margin-left: 275px;
+	position: absolute;
+	margin-top: -80px;
+}
+#draw_pie1{
+	display: inline-block;
+	margin-left: 465px;
+	position: absolute;
+	margin-top: -80px;
+}
+#draw_pie2{
+	display: inline-block;
+	margin-left: 655px;
+	position: absolute;
+	margin-top: -80px;
+}
+#data{
+	background-color: #D3D3D3;
+	padding: 10px;
+}
+#data span{
+	font-weight: bold;
+}
+#suggestions{
+	display: inline-block;
+	width: 565px;
+	position: absolute;
+	margin: 2px 0px 0px 8px;
+	height: 20%;
+}
+#month_drpdown{
+	display: inline;
+	margin-left: 30px;
+}
+#month_drpdown select{
+	width: 150px;
+	padding: 7px;
+}
+#proposition_drpdown{
+	display: inline-block;
+	margin-left: 1%;
+}
+#proposition{
+	font-family: calibri;
+	color: #107ABA;
+	margin-left: 30px;
+}
+#proposition i{
+	color: #107ABA;
+	font-size: 24px;
+}
+#prop_title{
+	display: inline;
+}
+#table{
+	display: inline-block;
+	height: 500px;
+}
+#kpi_info{
+	height: 600px;
+	margin-top: 35px;
+}

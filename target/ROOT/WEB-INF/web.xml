@@ -1,0 +1,24 @@
+<web-app>
+<welcome-file-list>
+	<welcome-file>scripts/index.html</welcome-file>
+</welcome-file-list>
+
+<servlet>
+	<servlet-name>JsonWriter</servlet-name>
+	<servlet-class>pack.JsonWriter</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>JsonWriter</servlet-name>
+	<url-pattern>/Suggestions</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>pdfWriter</servlet-name>
+	<servlet-class>pack.pdfWriter</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>pdfWriter</servlet-name>
+	<url-pattern>/download</url-pattern>
+</servlet-mapping> 
+
+</web-app>
