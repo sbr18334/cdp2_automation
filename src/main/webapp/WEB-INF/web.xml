@@ -21,4 +21,31 @@
 	<url-pattern>/download</url-pattern>
 </servlet-mapping> 
 
+<servlet>
+	<servlet-name>JDBCConnection</servlet-name>
+	<servlet-class>pack.JDBCConnection</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>JDBCConnection</servlet-name>
+	<url-pattern>/Redshift</url-pattern>
+</servlet-mapping> 
+
+<servlet>
+	<servlet-name>OverviewJdbcConnection</servlet-name>
+	<servlet-class>pack.OverviewJdbcConnection</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>OverviewJdbcConnection</servlet-name>
+	<url-pattern>/Overview</url-pattern>
+</servlet-mapping> 
+
+<servlet>
+	<servlet-name>BenchmarksJdbcConnection</servlet-name>
+	<servlet-class>pack.BenchmarksJdbcConnection</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>BenchmarksJdbcConnection</servlet-name>
+	<url-pattern>/Benchmark</url-pattern>
+</servlet-mapping>
+
 </web-app>

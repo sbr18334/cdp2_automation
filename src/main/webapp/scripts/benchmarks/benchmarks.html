@@ -1,20 +1,21 @@
-<div style="margin-left: 30px;">
-<div>
-<div style="display: inline-block;"><h1 style="color:#107ABA;">{{data.selectedOption.name}}</h1></div>
-<div style="display: inline-block;left: 46%;position: absolute;margin-top: 30px;">
-            <select name="mySelect" id="mySelect"
-              ng-options="option.name for option in data.availableOptions track by option.id"
-              ng-model="data.selectedOption">    
-            </select>
-</div>
-<div style="display: inline-block;left: 75%;width:290px;height:80px;background-color: #D3D3D3;position: absolute;margin-top: 15px;font-size: 13px;padding:10px;"><span style="font-weight: bold;font-size: 15px;">Metric Explanation</span><br>Crash rate is calculated by crashes divided by app launches.<span style="color: blue;text-decoration: underline;">External benchmark</span>&nbsp;split per app group: Best: Ecommerce(0.4% crash rate),worst: gaming(4.4% crash rate)</div>
-</div>
-<div style="margin-top: 50px;">
-<div id="curve_chart" style="width: 90%; height: 500px;margin-left: 0px;display: inline-block;"></div>
-<div style="display: inline-block;position: absolute;margin-left: 5px;background-color: #D3D3D3;height: 480px;width:8%;font-size: 14px;color: white;">
-	<div style="background-color: #158119;height: 12%;padding: 5px;">Top Benchmark: <0.4%</div>
-	<div style="height:76%;background-color: #EAC809;"></div>
-	<div style="background-color: #B6380C;height: 12%;padding: 5px;">Minimum Benchmark: 4.4% crash rate</div>
-</div>
-</div>
+<i class="fa fa-spinner fa-spin"></i>
+<div id="benchmark" style="margin-left: 30px;">
+	<div>
+		<div style="display: inline-block;"><h1 style="color:#107ABA;">{{metric.selectedOption.name}}</h1></div>
+		<div style="display: inline-block;left: 44%;position: absolute;margin-top: 30px;">
+		            <select name="mySelect" id="mySelect"
+		              ng-options="option.name for option in metric track by option.id"
+		              ng-model="metric.selectedOption">  
+		            </select>
+		</div>
+		<div style="display: inline-block;left: 75%;width:290px;height:80px;background-color: #D3D3D3;position: absolute;margin-top: 15px;font-size: 13px;padding:10px;"><span style="font-weight: bold;font-size: 15px;">Metric Explanation</span><br>Crash rate is calculated by crashes divided by app launches.<span style="color: blue;text-decoration: underline;">External benchmark</span>&nbsp;split per app group: Best: Ecommerce(0.4% crash rate),worst: gaming(4.4% crash rate)</div>
+	</div>
+	<div style="margin-top: 50px;">
+		<div id="curve_chart" style="width: 90%; height: 500px;margin-left: 0px;display: inline-block;"></div>
+		<div style="display: inline-block;position: absolute;margin-left: 5px;background-color: #D3D3D3;height: 480px;width:8%;font-size: 14px;color: white;">
+			<div style="background-color: #158119;height: 12%;padding: 5px;">Top Benchmark: <0.4%</div>
+			<div style="height:76%;background-color: #EAC809;"></div>
+			<div style="background-color: #B6380C;height: 12%;padding: 5px;">Minimum Benchmark: 4.4% crash rate</div>
+		</div>
+	</div>
 </div>
