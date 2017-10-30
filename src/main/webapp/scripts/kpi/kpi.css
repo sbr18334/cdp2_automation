@@ -36,6 +36,7 @@ select{/*
     -moz-appearance: none;
     appearance: none;*/
     padding: 7px;
+    font-weight: bold;
 }
 #slide{
 	display: inline-block;
@@ -76,9 +77,17 @@ select{/*
 #data{
 	background-color: #D3D3D3;
 	padding: 10px;
+	border-radius: 15px;
 }
 #data span{
 	font-weight: bold;
+}
+#data div{
+	padding:5px;
+}
+#data div:hover{
+	background-color: white;
+	cursor: pointer;
 }
 #suggestions{
 	display: inline-block;
@@ -98,6 +107,7 @@ select{/*
 #proposition_drpdown{
 	display: inline-block;
 	margin-left: 1%;
+	width: 160px;
 }
 #proposition{
 	font-family: calibri;
@@ -118,4 +128,52 @@ select{/*
 #kpi_info{
 	height: 600px;
 	margin-top: 35px;
+}
+#suggestionInfo{
+	height: 90px;
+	background-color: #D3D3D3;
+	padding: 10px;
+	margin-bottom: 6px;
+	border-radius: 15px;
+}
+#goedit{
+	margin-top: 3%;
+	margin-left: -10px;
+	text-align: center;
+}
+#go{
+	display: inline-block;
+	border-radius: 60%;
+	background-color: white;
+	padding: 7px;
+	margin-left: 1%;
+}
+
+#theme_drpdown{
+	display: inline;
+	margin-left: 30px;
+}
+#theme_drpdown select{
+	width: 150px;
+	padding: 7px;
+}
+#status_drpdown{
+	display: inline-block;
+	margin-left: 1%;
+	font-family: calibri;
+	color: #107ABA;
+}
+#priority_drpdown{
+	display: inline-block;
+	margin-left: 1%;
+	font-family: calibri;
+	color: #107ABA;
+}
+i:hover{
+	cursor: pointer;
+}
+.fa-spin{
+	font-size: 90px;
+	margin-left: 45%;
+	margin-top: 15%;
 }

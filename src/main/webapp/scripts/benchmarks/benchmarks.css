@@ -1,5 +1,6 @@
 select{
 	padding: 7px;
+	font-weight: bold;
 }
 #benchmarks{
 	margin-left: 30px;
@@ -67,4 +68,9 @@ select{
 #in{
 	height:76%;
 	background-color: #EAC809;
+}
+.fa-spin{
+	font-size: 90px;
+	margin-left: 45%;
+	margin-top: 15%;
 }

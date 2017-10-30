@@ -5,104 +5,170 @@ angular.module('app')
 	$('#overview div:not(:nth-child(2))').css('background-color','#2C5757');
 
 	$('#chart').hide();
+    $scope.info = '';
 
-	google.charts.load('current', {packages: ['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-    google.charts.setOnLoadCallback(drawChart1);
+    /////////////////////////////////db calls for all three charts///////////////////////////////////
+    $scope.$on('$viewContentLoaded', function() {
+        $http({
+          method: 'GET',
+          url: '/Overview',
+          params: {
+            sql: "SELECT case when status = 'Implemented' then 'Implemented'"+
+                         "when status = 'implemented' then 'Implemented'"+
+                         "when status = 'Not Committed' then 'Not Committed'"+
+                         "when status = 'in progress' then 'In progress'"+
+                         "when status = 'In progress' then 'In progress'"+
+                         "when status = 'Not committed' then 'Not Committed'"+
+                  "else status end"+
+           ", count(recommendations)"+
+            "FROM cdp2monthlyrpt.monthlyrpt_recomendation a,cdp2monthlyrpt.proposition_mapping b where a.proposition=b.proposition_recommendation and inc_flg=1 and status<>'Rejected by business' group by 1;",
+            details: "pie"
+        }
+        }).then(function(response){//imp//notcom//inpro
+          for(var i=0;i<response.data.length;i++){
+            if(response.data[i].status=="In progress"){$scope.prog = response.data[i].count;}
+            else if(response.data[i].status=="Implemented"){$scope.imp = response.data[i].count;}
+            else if(response.data[i].status=="Not Committed"){$scope.not_com = response.data[i].count;}
+            drawPie();
+          } 
+        })
+        $http({
+          method: 'GET',
+          url: '/Overview',
+          params: {
+            sql: "SELECT proposition, NVL(max(case when status = 'Implemented' then cnt end),0) as Implemented, NVL(max(case when status = 'Not Committed' then cnt end),0) as Not_Committed, NVL(max(case when status = 'In progress' then cnt end),0) as In_progress from (SELECT proposition_domo as proposition, case when status = 'Implemented' then 'Implemented' when status = 'implemented' then 'Implemented' when status = 'Not Committed' then 'Not Committed' when status = 'in progress' then 'In progress' when status = 'In progress' then 'In progress' when status = 'Not committed' then 'Not Committed' else status end as status, count(recommendations) cnt FROM cdp2monthlyrpt.monthlyrpt_recomendation a,cdp2monthlyrpt.proposition_mapping b where a.proposition=b.proposition_recommendation and inc_flg=1 and status<>'Rejected by business' group by 1,2)d group by 1;",
+            details: "horizontal"
+        }
+        }).then(function(response){
+              console.log(response.data);
+              $scope.info = {};
+              var i = 0;
+              while(i<response.data.length){
+                    var ang = [];
+                    ang[0] = response.data[i].proposition;
+                    ang[1] = response.data[i].in_progress;
+                    ang[2] = response.data[i].not_committed;
+                    ang[3] = response.data[i].implemented;
+                    $scope.info[i]= ang;
+                    i++;
+              }
+              drawChart(i);
+        })
+        $http({
+          method: 'GET',
+          url: '/Overview',
+          params: {
+            sql: "SELECT month, NVL(max(case when status = 'Implemented' then cnt end),0) as Implemented, NVL(max(case when status = 'Not Committed' then cnt end),0) as Not_Committed, NVL(max(case when status = 'In progress' then cnt end),0) as In_progress from ( SELECT month_des as Month, case when status = 'Implemented' then 'Implemented' when status = 'implemented' then 'Implemented' when status = 'Not Committed' then 'Not Committed' when status = 'in progress' then 'In progress' when status = 'In progress' then 'In progress' when status = 'Not committed' then 'Not Committed'else status end as status, count(recommendations) as cnt FROM cdp2monthlyrpt.monthlyrpt_recomendation a,cdp2monthlyrpt.months b,cdp2monthlyrpt.proposition_mapping c where a.month=b.month and a.proposition=c.proposition_recommendation and inc_flg=1 and status<>'Rejected by business' group by 1,2)d group by 1;",
+            details: "vertical"
+        }
+        }).then(function(response){
+              console.log(response.data);
+              $scope.info = {};
+              var i = 0;
+              while(i<response.data.length){
+                    var ang = [];
+                    ang[0] = response.data[i].month;
+                    ang[1] = response.data[i].in_progress;
+                    ang[2] = response.data[i].not_committed;
+                    ang[3] = response.data[i].implemented;
+                    $scope.info[i]= ang;
+                    i++;
+              }
 
-    function drawChart() {
-    	   // Define the chart to be drawn.
-    	   var data = google.visualization.arrayToDataTable([
-    	      ['Year', 'Asia', 'Europe' ,'Africa'],
-    		  ['2012',  700, 390, 220],
-    	      ['2013',  600, 400, 374],
-    	      ['2014',  470, 440, 120],
-    	      ['2015',  650, 480,230],
-    	      ['2016',  930, 340, 222],
-    	      ['2013',  500, 400, 283],
-    	      ['2014',  270, 440, 335],
-    	      ['2015',  550, 480, 242],
-    	      ['2016',  330, 240, 122]
-    	      ]);
+              drawChart1(i);
 
-    	   var options = {
-		      width: 450,
-		      height: 500,
-		      legend: { position: 'none' },
-		      bar: { groupWidth: '75%' },
-		      chartArea: {left: 50,top: 50},
-		      hAxis: { textPosition: 'none' },
-		      isStacked: true,
-		      colors: ['#279423','#E5A9CE','#DC6464']
-    	   };  
+        })
+    })
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    	   // Instantiate and draw the chart.
-    	   var chart = new google.visualization.BarChart(document.getElementById('barchart_material'));
-    	   chart.draw(data, options);
-    	}
 
-	function drawChart1() {
-    	   // Define the chart to be drawn.
-    	   var data = google.visualization.arrayToDataTable([
-    	      ['Year', 'Asia', 'Europe' ,'Africa'],
-    		  ['2012',  100, 190, 220],
-    	      ['2013',  100, 200, 174],
-    	      ['2014',  170, 240, 120],
-    	      ['2015',  150, 280,230],
-    	      ['2016',  270, 140, 322],
-    	      ['2013',  200, 200, 383],
-    	      ['2014',  370, 240, 435],
-    	      ['2015',  490, 380, 342],
-    	      ['2016',  430, 240, 422],    	     
-    	      ['2016',  630, 340, 322],
-    	      ['2013',  700, 300, 383],
-    	      ['2014',  670, 240, 335],
-    	      ['2015',  750, 380, 242],
-    	      ['2017', 740,233,421]
-    	      ]);
+    	google.charts.load('current', {packages: ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        google.charts.setOnLoadCallback(drawChart1);
 
-    	   var options = {
-		      width: 700,
-		      height: 400,
-		      backgroundColor: '#F9F9F9',
-		      legend: { position:'none' },
-		      bar: { groupWidth: '75%' },
-		      chartArea: {left: 30,top: 50,bottom: 30},
-		      hAxis: { textPosition: 'none'},
-		      vAxis: { textPosition: 'none'},
-		      isStacked: true,
-		      colors:['#279423','#E5A9CE', '#DC6464'],
-    	   };  
+        function drawChart(j) {
+        
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'proposition');
+            data.addColumn('number', 'prog');
+            data.addColumn('number', 'comm');
+            data.addColumn('number', 'implm');
 
-    	   // Instantiate and draw the chart.
-    	   var chart = new google.visualization.ColumnChart(document.getElementById('barchart_material1'));
-    	   chart.draw(data, options);
-    	}
-	
-	
-	/////pie chart/////
-    google.charts.setOnLoadCallback(drawPie);
+            for (var i = 0; i < j; i++) {
+                 data.addRow([$scope.info[i][0],$scope.info[i][1],$scope.info[i][2],$scope.info[i][3]]);
+            }
 
-    function drawPie() {
 
-      var data = google.visualization.arrayToDataTable([
-        ['Task', 'Hours per Day'],
-        ['Work',     7],
-        ['Eat',      4],
-        ['Commute',  2]
-      ]);
+        	   var options = {
+    		      width: 450,
+    		      height: 500,
+    		      legend: { position: 'none' },
+    		      bar: { groupWidth: '75%' },
+    		      chartArea: {left: 50,top: 50},
+    		      hAxis: { textPosition: 'none' },
+    		      isStacked: true,
+    		      colors: ['#279423','#E5A9CE','#DC6464']
+        	   };  
 
-      var options = {
-    		  width:250,
-    		  height:250,
-		      legend: { position:'none' },
-		      backgroundColor: '#F9F9F9',
-		      colors:['#279423','#E5A9CE', '#DC6464'],
-      };
+        	   // Instantiate and draw the chart.
+        	   var chart = new google.visualization.BarChart(document.getElementById('barchart_material'));
+        	   chart.draw(data, options);
+        	}
 
-      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    	function drawChart1(j) {
+        	   // Define the chart to be drawn.
+          var data = new google.visualization.DataTable();
+            data.addColumn('string', 'month');
+            data.addColumn('number', 'prog');
+            data.addColumn('number', 'comm');
+            data.addColumn('number', 'implm');
 
-      chart.draw(data, options);
-    }
-    /////pie-chart/////
+            for (var i = 0; i < j; i++) {
+                 data.addRow([$scope.info[i][0],$scope.info[i][1],$scope.info[i][2],$scope.info[i][3]]);
+            }
+
+        	   var options = {
+    		      width: 700,
+    		      height: 400,
+    		      backgroundColor: '#F9F9F9',
+    		      legend: { position:'none' },
+    		      bar: { groupWidth: '75%' },
+    		      chartArea: {left: 30,top: 50,bottom: 30},
+    		      // hAxis: { textPosition: 'none'},
+    		      // vAxis: { textPosition: 'none'},
+    		      isStacked: true,
+    		      colors:['#279423','#E5A9CE', '#DC6464'],
+        	   };  
+
+        	   // Instantiate and draw the chart.
+        	   var chart = new google.visualization.ColumnChart(document.getElementById('barchart_material1'));
+        	   chart.draw(data, options);
+        	}
+    	
+    	
+    	/////pie chart/////
+        google.charts.setOnLoadCallback(drawPie);
+
+        function drawPie() {
+
+          var data = google.visualization.arrayToDataTable([
+            ['status', 'Count'],
+            ['Implemented',     $scope.imp],
+            ['Not Committed',     $scope.not_com],
+            ['In progress',      $scope.prog]
+          ]);
+
+          var options = {
+        		  width:250,
+        		  height:250,
+    		      legend: { position:'none' },
+    		      backgroundColor: '#F9F9F9',
+    		      colors:['#279423','#E5A9CE', '#DC6464'],
+          };
+
+          var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+          chart.draw(data, options);
+        }
+        /////pie-chart/////
 });

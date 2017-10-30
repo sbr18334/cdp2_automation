@@ -1,20 +1,37 @@
 angular.module('app')
-.controller('BenchmarksController',function($scope,$window,$http,$state){
+.controller('BenchmarksController',function($scope,$window,$http,$state,$rootScope){
 	//styling//
 	  $('#tabs div:nth-child(3)').css('background-color','#EAEEE9');
       $('#tabs div:nth-child(3)').css('color','#107ABA');
       $('#tabs div:not(:nth-child(3))').css('background-color','#107ABA');
       $('#tabs div:not(:nth-child(3))').css('color','#EAEEE9');
     //
+      $("#benchmark").css('opacity','0');
+      $(".fa-spin").show();
 
-    $scope.data = {
-      availableOptions: [
-      {id:'1',name:"Error rate"},{id:'2',name:"Crash rate"},{id:'3',name:"First Launches"},{id:'4',name:"MAU"},
-      {id:'5',name:"Owner 30-day retention"},{id:'6',name:"Buy Clicks"},{id:'7',name:"MAT avg. Rating"},
-      {id:'8',name:"% of engaged users"}
-      ],
-    selectedOption: {id: '1', name: 'Error rate'}
-    }
+  $scope.$on('$viewContentLoaded', function() {
+    $scope.metic = $rootScope.metric;
+    if($scope.metric == null){
+      $http({
+            method: 'GET',
+            url: '/Benchmark',
+            params: {
+              sql: "SELECT * FROM cdp2monthlyrpt.metrics order by metric_name asc",
+              details: "metric"
+            }
+        }).then(function(response){
+            $rootScope.metric = response.data;
+            $rootScope.metric.selectedOption = response.data[0];
+            $scope.metric = $rootScope.metric;
+            $("#benchmark").css('opacity','1');
+            $(".fa-spin").hide();
+        })
+      }
+      else{
+            $("#benchmark").css('opacity','1');
+            $(".fa-spin").hide();
+      }
+    })
 
     ////graph////
       google.charts.load('current', {'packages':['corechart']});
