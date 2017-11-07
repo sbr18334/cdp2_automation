@@ -29,6 +29,7 @@ h5{
 	background-color: #EAEBEE;
 	display: inline-block;
 	margin-top: 5px;
+	margin-bottom: 5px;
 }
 #legend tr:nth-child(even) td{
 	background-color: lightgreen;
@@ -38,7 +39,7 @@ h5{
 }
 #overview{
 	display: inline-block;
-	margin: 0px 40px 0px 30px;
+	margin: -10px 40px 0px 30px;
 }
 #overview div{
 	display: inline-block;

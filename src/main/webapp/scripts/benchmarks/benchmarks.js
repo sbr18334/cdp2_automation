@@ -6,7 +6,7 @@ angular.module('app')
       $('#tabs div:not(:nth-child(3))').css('background-color','#107ABA');
       $('#tabs div:not(:nth-child(3))').css('color','#EAEEE9');
     //
-      $("#benchmark").css('opacity','0');
+      $("#benchmark div").css('opacity','0');
       $(".fa-spin").show();
 
   $scope.$on('$viewContentLoaded', function() {
@@ -23,12 +23,12 @@ angular.module('app')
             $rootScope.metric = response.data;
             $rootScope.metric.selectedOption = response.data[0];
             $scope.metric = $rootScope.metric;
-            $("#benchmark").css('opacity','1');
+            $("#benchmark div").css('opacity','1');
             $(".fa-spin").hide();
         })
       }
       else{
-            $("#benchmark").css('opacity','1');
+            $("#benchmark div").css('opacity','1');
             $(".fa-spin").hide();
       }
     })

@@ -106,6 +106,62 @@ public class OverviewJdbcConnection extends HttpServlet {
               jobj.put("in_progress", in_progress);
               jArray.add(jobj);
               }
+            else if(details.equals("performance")){
+              month = rs.getString("month_des");
+              proposition = rs.getString("proposition");
+              float crashrate = rs.getFloat("crashrate");
+              float crashrate_delta = rs.getFloat("crashrate_delta");
+              float firstlaunches = rs.getFloat("firstlaunches");
+              float firstlaunches_delta = rs.getFloat("firstlaunches_delta");
+              float total_unique_visitors = rs.getFloat("total_unique_visitors");
+              float total_unique_visitors_delta = rs.getFloat("total_unique_visitors_delta");
+              float thirty_ret_rate = rs.getFloat("thirty_ret_rate");
+              float thirty_ret_rate_delta = rs.getFloat("thirty_ret_rate_delta");
+              float avg_weekly_launch_per_user = rs.getFloat("avg_weekly_launch_per_user");
+              float avg_weekly_launch_per_user_delta = rs.getFloat("avg_weekly_launch_per_user_delta");
+              float total_avg_rating = rs.getFloat("total_avg_rating");
+              float total_avg_rating_delta = rs.getFloat("total_avg_rating_delta");
+              float marketable_reg_rate = rs.getFloat("marketable_reg_rate");
+              float marketable_reg_rate_delta = rs.getFloat("marketable_reg_rate_delta");
+            
+
+              JSONObject jobj = new JSONObject();
+              jobj.put("month", month);jobj.put("proposition", proposition);
+              jobj.put("crashrate", crashrate);jobj.put("crashrate_delta", crashrate_delta);
+              jobj.put("firstlaunches", firstlaunches);jobj.put("firstlaunches_delta", firstlaunches_delta);
+              jobj.put("total_unique_visitors", total_unique_visitors);jobj.put("total_unique_visitors_delta", total_unique_visitors_delta);
+              jobj.put("thirty_ret_rate", thirty_ret_rate);jobj.put("thirty_ret_rate_delta", thirty_ret_rate_delta);
+              jobj.put("avg_weekly_launch_per_user", avg_weekly_launch_per_user);jobj.put("avg_weekly_launch_per_user_delta", avg_weekly_launch_per_user_delta);
+              jobj.put("total_avg_rating", total_avg_rating);jobj.put("total_avg_rating_delta", total_avg_rating_delta);
+              jobj.put("marketable_reg_rate", marketable_reg_rate);jobj.put("marketable_reg_rate_delta", marketable_reg_rate_delta);
+              jArray.add(jobj);
+            }
+            else if(details.equals("scale")){
+              month = rs.getString("month_des");
+              float total_unique_visitors = rs.getFloat("total_unique_visitors");
+              float total_unique_visitors_delta = rs.getFloat("total_unique_visitors_delta");
+              float thirty_day_retention = rs.getFloat("thirty_day_retention");
+              float thirty_day_retention_delta = rs.getFloat("thirty_day_retention_delta");
+              float ninty_day_retention = rs.getFloat("ninty_day_retention");
+              float ninty_day_retention_delta = rs.getFloat("ninty_day_retention_delta");
+              float engaged_visitors = rs.getFloat("engaged_visitors");
+              float engaged_visitors_delta = rs.getFloat("engaged_visitors_delta");
+              float marketable_optin = rs.getFloat("marketable_optin");
+              float marketable_optin_delta = rs.getFloat("marketable_optin_delta");
+              float buybuttonclicks = rs.getFloat("buybuttonclicks");
+              float buybuttonclicks_delta = rs.getFloat("buybuttonclicks_delta");
+            
+
+              JSONObject jobj = new JSONObject();
+              jobj.put("month", month);
+              jobj.put("total_unique_visitors", total_unique_visitors);jobj.put("total_unique_visitors_delta", total_unique_visitors_delta);
+              jobj.put("thirty_day_retention", thirty_day_retention);jobj.put("thirty_day_retention_delta", thirty_day_retention_delta);
+              jobj.put("ninty_day_retention", ninty_day_retention);jobj.put("ninty_day_retention_delta", ninty_day_retention_delta);
+              jobj.put("engaged_visitors", engaged_visitors);jobj.put("engaged_visitors_delta", engaged_visitors_delta);
+              jobj.put("marketable_optin", marketable_optin);jobj.put("marketable_optin_delta", marketable_optin_delta);
+              jobj.put("buybuttonclicks", buybuttonclicks);jobj.put("buybuttonclicks_delta", buybuttonclicks_delta);
+              jArray.add(jobj);
+            }
            }
 
             String name = jArray.toString();
