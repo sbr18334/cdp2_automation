@@ -1,11 +1,29 @@
+<i class="fa fa-spinner fa-spin"></i>
 <table>
     <tr>
     	<th>Metrics</th><th colspan="2">Crash rate</th><th colspan="2">First launches</th><th colspan="2">MAU</th><th colspan="2">Total 30-day retention rate</th><th colspan="2">Avg. launches per week per user</th><th colspan="2">Total avg. app rating</th><th colspan="2">Opt-in marketable registration rate</th>
     </tr>
     <tr>
-    	<th>Propositions</th><th>Month-17</th><th>&Delta;</th><th>Month-17</th><th>&Delta;</th><th>Month-17</th><th>&Delta;</th><th>Month-17</th><th>&Delta;</th><th>Month-17</th><th>&Delta;</th><th>Month-17</th><th>&Delta;</th><th>Month-17</th><th>&Delta;</th>
+    	<th>Propositions</th><th>{{month}}</th><th>&Delta;</th><th>{{month}}</th><th>&Delta;</th><th>{{month}}</th><th>&Delta;</th><th>{{month}}</th><th>&Delta;</th><th>{{month}}</th><th>&Delta;</th><th>{{month}}</th><th>&Delta;</th><th>{{month}}</th><th>&Delta;</th>
+    </tr>
+    <tr>
+    	<td>{{total.proposition}}</td>
+    	<td>{{total.crashrate}}</td><td>{{total.crashrate_delta}}</td>
+        <td>{{total.firstlaunches}}</td><td>{{total.firstlaunches_delta}}</td>
+    	<td>{{total.total_unique_visitors}}</td><td>{{total.total_unique_visitors_delta}}</td>   	
+    	<td>{{total.thirty_ret_rate}}</td><td>{{total.thirty_ret_rate_delta}}</td>
+    	<td>{{total.avg_weekly_launch_per_user}}</td><td>{{total.avg_weekly_launch_per_user_delta}}</td>
+    	<td>{{total.total_avg_rating}}</td><td>{{total.total_avg_rating_delta}}</td>
+    	<td>{{total.marketable_reg_rate}}</td><td>{{total.marketable_reg_rate}}</td>
     </tr>
     <tr ng-repeat="n in data track by $index">
-    	<td>{{n.id}}</td><td>{{n.type}}</td><td>{{data1}}</td>
+    	<td>{{n.proposition}}</td>
+    	<td>{{n.crashrate}}</td><td>{{n.crashrate_delta}}</td>
+        <td>{{n.firstlaunches}}</td><td>{{n.firstlaunches_delta}}</td>
+    	<td>{{n.total_unique_visitors}}</td><td>{{n.total_unique_visitors_delta}}</td>   	
+    	<td>{{n.thirty_ret_rate}}</td><td>{{n.thirty_ret_rate_delta}}</td>
+    	<td>{{n.avg_weekly_launch_per_user}}</td><td>{{n.avg_weekly_launch_per_user_delta}}</td> 	
+    	<td>{{n.total_avg_rating}}</td><td>{{n.total_avg_rating_delta}}</td>
+    	<td>{{n.marketable_reg_rate}}</td><td>{{n.marketable_reg_rate}}</td>
     </tr>
 </table>

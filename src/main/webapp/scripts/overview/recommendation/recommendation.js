@@ -40,7 +40,6 @@ angular.module('app')
             details: "horizontal"
         }
         }).then(function(response){
-              console.log(response.data);
               $scope.info = {};
               var i = 0;
               while(i<response.data.length){
@@ -62,7 +61,6 @@ angular.module('app')
             details: "vertical"
         }
         }).then(function(response){
-              console.log(response.data);
               $scope.info = {};
               var i = 0;
               while(i<response.data.length){
@@ -159,8 +157,8 @@ angular.module('app')
           ]);
 
           var options = {
-        		  width:250,
-        		  height:250,
+        		  width:320,
+        		  height:320,
     		      legend: { position:'none' },
     		      backgroundColor: '#F9F9F9',
     		      colors:['#279423','#E5A9CE', '#DC6464'],

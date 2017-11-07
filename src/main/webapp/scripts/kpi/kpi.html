@@ -2,16 +2,16 @@
 <div id="kpi">
     <div id="prop_title">
         <h1 id="proposition">
-            <i class="fa fa-connectdevelop" aria-hidden="true"></i>&nbsp;{{proposition.selectedOption.name}}
+            <!-- <i class="fa fa-connectdevelop" aria-hidden="true"></i>&nbsp; -->{{proposition.selectedOption.name}}
         </h1>
         <div id="month_drpdown">
-        	<select ng-options="option.name for option in month track by option.id" ng-model="month.selectedOption">
+        	<select ng-options="option.name for option in month track by option.id" ng-model="month.selectedOption" ng-change="update()">
         	</select>
         </div>
         <div id="proposition_drpdown">
             <select name="mySelect" id="mySelect"
               ng-options="option.name for option in proposition track by option.id"
-              ng-model="proposition.selectedOption">    
+              ng-model="proposition.selectedOption" ng-change="update()">    
             </select>
         </div>
         <div id="slide">
@@ -30,48 +30,51 @@
             <table>
                 <tr>
                     <th></th><th style="width:370px;height:30px;">Metrics</th><th style="width:69px;height:30px;">{{month.selectedOption.name}}</th>
-                    <th style="width:60px;height:30px;">&Delta;</th><th style="width:60px;height:30px;"">Goal</th>
+                    <th style="width:60px;height:30px;">&Delta;</th><th style="width:90px;height:30px;">Goal</th>
                 </tr>
                 <tr>
-                    <td rowspan="2"><i class="fa fa-bug" aria-hidden="true"></i></td><td style="border:0px solid;margin:0px;">Error rate</td><td>14.8%</td><td>+2.3%</td><td style="background-color: #60C139"><16%</td></tr>
-                    <tr><td style="display: none"></td><td>Crash rate</td><td>17.7%</td><td style="background-color: #60C139">+9.7%</td><td style="background-color: #60C139">>2%</td>
+                    <td rowspan="2"><i class="fa fa-bug" aria-hidden="true"></i></td><td style="border:0px solid;margin:0px;">Error rate</td><td>{{metricData_0}}</td><td>{{metricData_1}}</td><td>N/A</td></tr>
+                    <tr><td style="display: none"></td><td>Crash rate</td><td>{{metricData_2}}</td><td>{{metricData_3}}</td><td>N/A</td>
                 </tr>
                 <tr>
                     <td rowspan="2"><i class="fa fa-deaf" aria-hidden="true"></i>
-                    </td><td style="border:0px solid;margin:0px;">First Launches</td><td>22.3%</td><td>-9.1%</td><td style="background-color: #FF6347"><1.2%</td>
+                    </td><td style="border:0px solid;margin:0px;">First Launches</td><td>{{metricData_4}}</td><td>{{metricData_5}}</td><td>N/A</td>
                 </tr>
                 <tr>
-                    <td style="display: none"></td><td>Monthly ative users</td><td>33.2%</td><td style="background-color: #60C139">+9.3%</td><td><11.2%</td>
+                    <td style="display: none"></td><td>Monthly ative users</td><td>{{metricData_6}}</td><td>{{metricData_7}}</td><td>N/A</td>
                 </tr>
                 <tr>
-                    <td rowspan="2"><i class="fa fa-clock-o" aria-hidden="true"></i></td><td style="border:0px solid;margin:0px;">Owner 30-day retention rate</td><td>47.7%</td><td>-2.1%</td><td style="background-color: #60C139"><12.2%</td>
+                    <td rowspan="3"><i class="fa fa-clock-o" aria-hidden="true"></i></td><td style="border:0px solid;margin:0px;">Owner 30-day retention rate</td><td>{{metricData_8}}</td><td>{{metricData_9}}</td><td>N/A</td>
                 </tr>
                 <tr>
-                    <td style="display: none"></td><td>Owner 90-day retention rate</td><td>15.2%</td><td style="background-color: #60C139">+23.3%</td><td><2.2%</td>
+                    <td style="display: none"></td><td>Prospect 30-day retention rate</td><td>{{metricData_10}}</td><td>{{metricData_11}}</td><td>N/A</td>
                 </tr>
                 <tr>
-                    <td rowspan="2"><i class="fa fa-line-chart" aria-hidden="true"></i></td><td style="border:0px solid;margin:0px;">Avg. weekely launches per user</td><td>16.9%</td><td style="background-color: #60C139">+10.2%</td><td style="background-color: #60C139"><+9.3%</td>
+                    <td style="display: none"></td><td>Owner 90-day retention rate</td><td>{{metricData_12}}</td><td>{{metricData_13}}</td><td>N/A</td>
                 </tr>
                 <tr>
-                    <td style="display: none"></td><td>% of engaged users</td><td>31.3%</td><td style="background-color: #FF6347">-12.2%</td><td><0.4%</td>
+                    <td rowspan="2"><i class="fa fa-line-chart" aria-hidden="true"></i></td><td style="border:0px solid;margin:0px;">Avg. weekely launches per user</td><td>{{metricData_14}}</td><td>{{metricData_15}}</td><td>N/A</td>
                 </tr>
                 <tr>
-                    <td rowspan="2"><i class="fa fa-th-list" aria-hidden="true"></i></td><td style="border:0px solid;margin:0px;">total avg. app rating</td><td>14.0%</td><td style="background-color: #60C139">-9.9%</td><td style="background-color: #FF6347"><4.5%</td>
+                    <td style="display: none"></td><td>% of engaged users</td><td>{{metricData_16}}</td><td>{{metricData_17}}</td><td>N/A</td>
                 </tr>
                 <tr>
-                    <td style="display: none"></td><td>MAT average product rating</td><td>7.3%</td><td style="background-color: #60C139">9.3%</td><td>>2.2%</td>
+                    <td rowspan="2"><i class="fa fa-th-list" aria-hidden="true"></i></td><td style="border:0px solid;margin:0px;">total avg. app rating</td><td>{{metricData_18}}</td><td>{{metricData_19}}</td><td>N/A</td>
                 </tr>
                 <tr>
-                    <td rowspan="2"><i class="fa fa-university" aria-hidden="true"></i></td><td style="border:0px solid;margin:0px;">Marketable registrations rate</td><td>1.0%</td><td style="background-color: #FF6347">-19.9%</td><td style="background-color: #60C139"><4.5%</td>
+                    <td style="display: none"></td><td>MAT average product rating</td><td>{{metricData_20}}</td><td>{{metricData_21}}</td><td>N/A</td>
                 </tr>
                 <tr>
-                    <td style="display: none"></td><td>Buy clicks</td><td>12.7%</td><td>-2.3%</td><td></td>
+                    <td rowspan="2"><i class="fa fa-university" aria-hidden="true"></i></td><td style="border:0px solid;margin:0px;">Marketable registrations rate</td><td>{{metricData_22}}</td><td>{{metricData_23}}</td><td>N/A</td>
+                </tr>
+                <tr>
+                    <td style="display: none"></td><td>Buy clicks</td><td>{{metricData_24}}</td><td>{{metricData_25}}</td><td></td>
                 </tr>
                 <tr>
                     <td></td><td>CDP2 Recommondations realized/made</td><td>10/24</td><td>+2/+12</td><td></td>
                 </tr>
                 <tr>
-                    <td></td><td>Version IOS | Android</td><td colspan="3" style="background-color: #60C139">30 Month'17(Version 2.2)</td>
+                    <td></td><td>Version IOS | Android</td><td colspan="3">30 Month'17(Version 2.2)</td>
                 </tr>
             </table>
         </div>
@@ -120,11 +123,11 @@
                 </div>
             </div>
             <div id="data">
-                <div style="border-radius: 15px;">
+                <div style="border-radius: 15px;" ng-repeat="n in suggestionData track by $index">
                     <div id="sug">
-                    	<span>First Launches and MAUs improved</span><br>Increase in first launches and MAUs has been driven by the launch of Shanghai proposition across both the iOS and Android Platforms<br>
+                    	<span>{{n.key_insights}}</span><br>{{n.recommendations}}<br>
                     </div>
-                    <div id="eddlt" style="display: block;">
+                    <div id="eddlt" style="display: none;">
                     	<div style="width: 45%; text-align: center; display: inline-block; background-color: rgb(90,132, 23);" ng-click="editSuggestion()">Edit</div>
                     	<div style="width: 45%; text-align: center; display: inline-block; background-color: #CA4040;" ng-click="deleteSuggestion()">Delete</div>
                    	</div>

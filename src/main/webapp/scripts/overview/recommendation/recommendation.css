@@ -29,24 +29,24 @@
 #barchart_material1{
 	width: 500px; 
 	height: 400px;
-	float:left;
+	float: left;
 }
 #piechart{
 	width: 300px; 
 	height: 250px;
-	float:right;
-	margin-top:100px;
-	margin-right:20px;
+	float: right;
+	margin-top: 70px;
+	margin-right: 70px;
 }
 #legend1{
-	margin-left:0px;
-	padding-top:20px;
-	width:380px;
+	margin-left: 0px;
+	padding-top: 20px;
+	width: 380px;
 }
 #legend2{
-	margin-left:10px;
-	padding-top:20px
-	;width:300px;
+	margin-left: 10px;
+	padding-top: 20px;
+	width: 300px;
 }
 #block1{
 	display: inline-block;
@@ -55,7 +55,7 @@
 }
 #block2{
 	display: inline-block;
-	margin-left:10px;
+	margin-left: 10px;
 	width: 68%;
-	background-color:#F9F9F9;
+	background-color: #F9F9F9;
 }

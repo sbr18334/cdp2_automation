@@ -37,6 +37,8 @@ select{/*
     appearance: none;*/
     padding: 7px;
     font-weight: bold;
+    box-shadow: 2px 2px 2px grey;
+    cursor: pointer;
 }
 #slide{
 	display: inline-block;
@@ -61,23 +63,40 @@ select{/*
 	margin-left: 275px;
 	position: absolute;
 	margin-top: -80px;
+	height: 120px;
+	width: 184px;
+	background-color: #D3D3D3;
+	text-align: center;
+	border-radius: 10px;
 }
 #draw_pie1{
 	display: inline-block;
 	margin-left: 465px;
 	position: absolute;
 	margin-top: -80px;
+	height: 120px;
+	width: 184px;
+	background-color: #D3D3D3;
+	text-align: center;
+	border-radius: 10px;
 }
 #draw_pie2{
 	display: inline-block;
 	margin-left: 655px;
 	position: absolute;
 	margin-top: -80px;
+	height: 120px;
+	width: 184px;
+	background-color: #D3D3D3;
+	text-align: center;
+	border-radius: 10px;
 }
 #data{
 	background-color: #D3D3D3;
 	padding: 10px;
 	border-radius: 15px;
+	max-height: 410px;
+	overflow: auto;
 }
 #data span{
 	font-weight: bold;
@@ -176,4 +195,5 @@ i:hover{
 	font-size: 90px;
 	margin-left: 45%;
 	margin-top: 15%;
+	margin-bottom: 30%;
 }
