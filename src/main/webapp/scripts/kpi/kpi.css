@@ -95,13 +95,14 @@ select{/*
 	background-color: #D3D3D3;
 	padding: 10px;
 	border-radius: 15px;
-	max-height: 410px;
+	max-height: 350px;
 	overflow: auto;
 }
 #data span{
 	font-weight: bold;
 }
 #data div{
+	border-radius: 10px;
 	padding:5px;
 }
 #data div:hover{
@@ -196,4 +197,10 @@ i:hover{
 	margin-left: 45%;
 	margin-top: 15%;
 	margin-bottom: 30%;
+}
+.fa-refresh{
+	position: fixed;
+	margin-left: 35%;
+	margin-top: 15%;
+	z-index: 10;
 }

@@ -1,4 +1,5 @@
 <i class="fa fa-spinner fa-spin"></i>
+<i class="fa fa-refresh fa-spin"></i>
 <div id="kpi">
     <div id="prop_title">
         <h1 id="proposition">
@@ -96,47 +97,47 @@
                         <div style="display:inline-block;margin-left: 80px;">Priority</div>
                     </div>
 
-                <!--  -->
                     <div>
-                    <div id="theme_drpdown">
-                        <select ng-options="option.name for option in theme.availableOptions track by option.id" ng-model="theme.selectedOption">
-                        </select>
-                    </div>
-                    <div id="status_drpdown">
-                        <select name="mySelect" id="mySelect"
-                          ng-options="option.name for option in status.availableOptions track by option.id"
-                          ng-model="status.selectedOption">    
-                        </select>
-                    </div>
-                    <div id="priority_drpdown">
-                        <select name="mySelect" id="mySelect"
-                          ng-options="option.name for option in priority.availableOptions track by option.id"
-                          ng-model="priority.selectedOption">    
-                        </select>
-                    </div>
-                    <div id="go">
-                        <i class="fa fa-arrow-right" aria-hidden="true" ng-click="updateSuggestion()"></i>
+                        <div id="theme_drpdown">
+                            <select ng-options="option.name for option in theme.availableOptions track by option.id" ng-model="theme.selectedOption">
+                            </select>
+                        </div>
+                        <div id="status_drpdown">
+                            <select name="mySelect" id="mySelect"
+                              ng-options="option.name for option in status.availableOptions track by option.id"
+                              ng-model="status.selectedOption">    
+                            </select>
+                        </div>
+                        <div id="priority_drpdown">
+                            <select name="mySelect" id="mySelect"
+                              ng-options="option.name for option in priority.availableOptions track by option.id"
+                              ng-model="priority.selectedOption">    
+                            </select>
+                        </div>
+                        <div id="go">
+                            <i class="fa fa-arrow-right" aria-hidden="true" ng-click="updateSuggestion()"></i>
+                        </div>
                     </div>
                 </div>
-                <!--  -->
-
+            </div>
+            <div style="background-color: #D3D3D3;padding: 10px;border-radius: 15px;margin-bottom:1px;" id="add">
+                <span style="font-weight:bold;padding-left:10px;" id="sug_info">Suggestions:</span>
+                <div style="background-color:#107ABA;margin-left:55%;padding:5px 10px 5px 10px;border-radius: 10px;display:inline;color:white;cursor:pointer;" id="addButton">
+                    <i class="fa fa-plus-circle fa-lg" aria-hidden="true" style="border-radius:50%;"></i>
+                    <span>Add Suggestion</span>
                 </div>
             </div>
             <div id="data">
-                <div style="border-radius: 15px;" ng-repeat="n in suggestionData track by $index">
-                    <div id="sug">
+                <div style="border-radius: 15px;" ng-repeat="n in suggestionData track by $index" id="{{$index}}" ng-mouseover="hoverIn($index)" ng-mouseleave="hoverOut($index)">
+                    <div id="sug" ng-click="click($index)">
                     	<span>{{n.key_insights}}</span><br>{{n.recommendations}}<br>
                     </div>
                     <div id="eddlt" style="display: none;">
-                    	<div style="width: 45%; text-align: center; display: inline-block; background-color: rgb(90,132, 23);" ng-click="editSuggestion()">Edit</div>
-                    	<div style="width: 45%; text-align: center; display: inline-block; background-color: #CA4040;" ng-click="deleteSuggestion()">Delete</div>
+                    	<div style="color:white; width: 45%; text-align: center; display: inline-block; background-color: rgb(90,132, 23);" ng-click="editSuggestion($index,n)">Edit</div>
+                    	<div style="color:white; width: 45%; text-align: center; display: inline-block; background-color: #CA4040;" ng-click="deleteSuggestion($index,n)">Delete</div>
                    	</div>
                 </div>
-    <!--             <div>
-                <span>Owner 30 Day retention improved by 31%</span><br>The retention numbers are driven jointly by Tuscany and Shanghai device owners.One posiible reason for this can be the increase in the uptake goals.Goal uptake has more than doubled from Jan-17 to Month-17.Earlier analysis confirmed that users with goals shoe higher retention rates.<br></div>
-                <div><span>% of Engaged users improved by 26%</span><br>% of engaged users has increased due to the increase in goal uptake as one of the factors used for defining engaged users is goals start<br></div>
-                <div><span>Buy Clicks improved by 35%</span><br>Increase in buy clicks is due to increased traffic on the app after Shanghai launchs<br></div> -->
-                <br><i class="fa fa-plus-circle fa-lg" aria-hidden="true" style="border-radius:50%;margin-left:10px;"></i>
+                <br>
             </div>
         </div>
     </div>

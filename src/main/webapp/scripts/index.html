@@ -10,6 +10,10 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/core.js"></script>
     <script type="text/javascript" src="scripts/app.js"></script>
 	<script type="javascript" src="scripts/home.spec.js"></script>
+    <!-- -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.7.7/xlsx.core.min.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xls/0.7.4-a/xls.core.min.js"></script>  
+    <!-- -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highstock/5.0.14/highstock.js"></script>
 	<script src="http://code.highcharts.com/modules/exporting.js"></script>
@@ -18,6 +22,8 @@
     <script type="text/javascript" src="scripts/overview/overview.js"></script>
     <script type="text/javascript" src="scripts/kpi/kpi.controller.js"></script>
     <script type="text/javascript" src="scripts/kpi/kpi.js"></script>
+    <script type="text/javascript" src="scripts/recommendations/recommendations.controller.js"></script>
+    <script type="text/javascript" src="scripts/recommendations/recommendations.js"></script>
     <script type="text/javascript" src="scripts/benchmarks/benchmarks.controller.js"></script>
     <script type="text/javascript" src="scripts/benchmarks/benchmarks.js"></script>
     <script type="text/javascript" src="scripts/report/report.controller.js"></script>
@@ -54,6 +60,7 @@
     	<div id="tabs">
     		<div ui-sref="performance">Overview</div>
     		<div ui-sref="kpi">KPI</div>
+            <div ui-sref="recommendations">Recommendations</div>
     		<div ui-sref="benchmarks">Benchmarks</div>
     		<div ui-sref="report">Admin/Report</div>
     	</div>

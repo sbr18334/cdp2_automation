@@ -1,0 +1,69 @@
+<i class="fa fa-spinner fa-spin"></i>
+<div id="recommendationPage">
+	<div id="head">
+		<div id="new">
+            <div id="addButton" ng-click="addRecommendation()">
+                <i class="fa fa-plus-circle fa-lg" aria-hidden="true" style="border-radius:50%;"></i>
+                <span>Add Recommendation</span>
+            </div>
+        </div>
+		<div id="count"><h5>Displaying {{length}} Recommendations</h5></div>
+	</div>
+	<div id="fields_rec">
+        <div id="month_drpdown">
+            <span>Month:</span>
+        	<select ng-options="option.name for option in month track by option.id" ng-model="month.selectedOption">
+        	</select>
+        </div>
+        <div id="proposition_drpdown">
+            <span>Proposition:</span>
+            <select name="mySelect" id="mySelect"
+              ng-options="option.name for option in proposition track by option.id"
+              ng-model="proposition.selectedOption">    
+            </select>
+        </div>
+        <div id="theme_drpdown">
+            <span>Theme:</span>
+            <select ng-options="option.name for option in theme.availableOptions track by option.id" ng-model="theme.selectedOption">
+            </select>
+        </div>
+        <div id="status_drpdown">
+            <span>Status:</span>
+            <select name="mySelect" id="mySelect"
+              ng-options="option.name for option in status.availableOptions track by option.id"
+              ng-model="status.selectedOption">    
+            </select>
+        </div>
+        <div id="priority_drpdown">
+            <span>Priority:</span>
+            <select name="mySelect" id="mySelect"
+              ng-options="option.name for option in priority.availableOptions track by option.id"
+              ng-model="priority.selectedOption">    
+            </select>
+        </div>
+        <div id="close" ng-click="close()"><i class="fa fa-times" aria-hidden="true"></i></div>
+        <div style="margin-top:5px;">
+	        <span>Key_insight:</span><input autofocus="autofocus" type="text" id="current Name" ng-model="key" style="margin:10px 10px 3px 5px;border-radius:8px;padding:8px;width:350px;font-weight:bold;text-transform: capitalize"/>
+	        <span>Recommendation:</span><textarea ng-model="recom" rows="2" style="width:615px;margin-left:5px;border-radius:8px;display:inline-block;padding-left:5px;margin-bottom:-14px"></textarea>   
+	        <div id="go" ng-click="updateRecommendaiton()">
+	            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+	        </div>
+	    </div>
+	</div>
+	<div id="tabledata">
+		<table>
+		    <tr>
+		    	<th>ID</th><th>Month</th><th>Priority</th>
+		        <th>Proposition</th><th>Key_insights</th>
+		    	<th>Recommendations</th><th>Status</th><th>Theme</th>
+		    </tr>
+		    <tr ng-repeat="n in suggestionData track by $index">
+		    	<td>{{n.id}}</td>
+		    	<td>{{n.month}}</td><td>{{n.priority}}</td>
+		        <td>{{n.proposition}}</td><td>{{n.key_insights}}</td>
+		    	<td>{{n.recommendations}}</td><td>{{n.status}}</td>   	
+		    	<td>{{n.theme}}</td>
+		    </tr>
+		</table>
+	</div>
+</div>

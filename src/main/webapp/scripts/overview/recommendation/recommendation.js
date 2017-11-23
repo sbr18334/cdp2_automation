@@ -87,10 +87,10 @@ angular.module('app')
         function drawChart(j) {
         
             var data = new google.visualization.DataTable();
-            data.addColumn('string', 'proposition');
-            data.addColumn('number', 'prog');
-            data.addColumn('number', 'comm');
-            data.addColumn('number', 'implm');
+            data.addColumn('string', 'Proposition');
+            data.addColumn('number', 'In Progress');
+            data.addColumn('number', 'Not Committed');
+            data.addColumn('number', 'Implemented');
 
             for (var i = 0; i < j; i++) {
                  data.addRow([$scope.info[i][0],$scope.info[i][1],$scope.info[i][2],$scope.info[i][3]]);
@@ -105,7 +105,7 @@ angular.module('app')
     		      chartArea: {left: 50,top: 50},
     		      hAxis: { textPosition: 'none' },
     		      isStacked: true,
-    		      colors: ['#279423','#E5A9CE','#DC6464']
+    		      colors: ['#DC6464','#E5A9CE','#279423']
         	   };  
 
         	   // Instantiate and draw the chart.
@@ -116,10 +116,10 @@ angular.module('app')
     	function drawChart1(j) {
         	   // Define the chart to be drawn.
           var data = new google.visualization.DataTable();
-            data.addColumn('string', 'month');
-            data.addColumn('number', 'prog');
-            data.addColumn('number', 'comm');
-            data.addColumn('number', 'implm');
+            data.addColumn('string', 'Month');
+            data.addColumn('number', 'In Progress');
+            data.addColumn('number', 'Not Committed');
+            data.addColumn('number', 'Implemented');
 
             for (var i = 0; i < j; i++) {
                  data.addRow([$scope.info[i][0],$scope.info[i][1],$scope.info[i][2],$scope.info[i][3]]);
@@ -135,7 +135,7 @@ angular.module('app')
     		      // hAxis: { textPosition: 'none'},
     		      // vAxis: { textPosition: 'none'},
     		      isStacked: true,
-    		      colors:['#279423','#E5A9CE', '#DC6464'],
+    		      colors:['#DC6464','#E5A9CE', '#279423'],
         	   };  
 
         	   // Instantiate and draw the chart.
