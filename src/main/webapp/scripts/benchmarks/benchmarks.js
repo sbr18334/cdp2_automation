@@ -1,15 +1,18 @@
 angular.module('app')
 .controller('BenchmarksController',function($scope,$window,$http,$state,$rootScope){
 	//styling//
-	  $('#tabs div:nth-child(3)').css('background-color','#EAEEE9');
-      $('#tabs div:nth-child(3)').css('color','#107ABA');
-      $('#tabs div:not(:nth-child(3))').css('background-color','#107ABA');
-      $('#tabs div:not(:nth-child(3))').css('color','#EAEEE9');
+	  $('#tabs div:nth-child(4)').css('background-color','#EAEEE9');
+      $('#tabs div:nth-child(4)').css('color','#107ABA');
+      $('#tabs div:not(:nth-child(4))').css('background-color','#107ABA');
+      $('#tabs div:not(:nth-child(4))').css('color','#EAEEE9');
     //
       $("#benchmark div").css('opacity','0');
       $(".fa-spin").show();
 
-  $scope.$on('$viewContentLoaded', function() {
+    $scope.update = function(){
+      get($scope.metric.selectedOption)
+    }
+
     $scope.metic = $rootScope.metric;
     if($scope.metric == null){
       $http({
@@ -25,13 +28,55 @@ angular.module('app')
             $scope.metric = $rootScope.metric;
             $("#benchmark div").css('opacity','1');
             $(".fa-spin").hide();
+            get($scope.metric.selectedOption)
         })
       }
       else{
             $("#benchmark div").css('opacity','1');
             $(".fa-spin").hide();
       }
-    })
+
+      /////////////////////month////////////////////////////
+      function get(a){
+        $http({
+            method: 'GET',
+            url: '/Redshift',
+            params: {
+              sql: "select distinct(b.month_des) from cdp2monthlyrpt.monthlyrpt_metric_all as a inner join cdp2monthlyrpt.months as b on a.month = b.month order by a.month desc;",
+              details: "months"
+            }
+        }).then(function(response){
+            $scope.month = response.data;
+        })
+        /////////////////////month////////////////////////////
+        /////////////////////proposition//////////////////////
+        $http({
+            method: 'GET',
+            url: '/Redshift',
+            params: {
+              sql: "select distinct(proposition) from cdp2monthlyrpt.monthlyrpt_metric_all where proposition<>'Total';",
+              details: "proposition"
+            }
+        }).then(function(response){
+            $scope.proposition = response.data;
+            drawChart();
+        })
+        /////////////////////proposition//////////////////////        
+        /////////////////////data//////////////////////
+        $http({
+            method: 'GET',
+            url: '/Benchmark',
+            params: {
+              sql: "select  b.month_des, a.proposition, a."+a.name+" From cdp2monthlyrpt.monthlyrpt_metric_all as a inner join cdp2monthlyrpt.months as b on a.month = b.month where proposition<>'Total';",
+              details: "data"
+            }
+        }).then(function(response){
+            $scope.data = response.data;
+            //drawChart();
+        })
+        /////////////////////data//////////////////////
+      }
+
 
     ////graph////
       google.charts.load('current', {'packages':['corechart']});
@@ -39,21 +84,23 @@ angular.module('app')
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sonicare for kids', 'Airfryer', 'Grooming Guide', 'Smart Baby Monitor', 'uGrowth Healthy Baby',
-           'Healthy Drinks', 'Easy Weaning', 'Lumea IPL', 'Sonicare Connected', 'Average'],
-          ['Jun-16',  1000,  400,  800,  200,  300,  500,  1200,  900,  690,  400],
-          ['July-16',  1150,  460,  900,  300,  440,  540,  1300,  990,  650,  600],
-          ['Aug-16',  960,   600,  850,  400,  500,  520,  1400,  890,  780,  400],
-          ['Sep-16',  970,  440,  700,  340,  600,  560,  1290,  980,  800,  400],
-          ['Oct-16',  830,  540,  900,  390,  500,  510,  1190,   1010,  720,  400],
-          ['Nov-16',  1030,  640,  1000,  400,  410,  600,  1160,  1000,  800,  600],
-          ['Dec-16',  1230,  320,  890,  450,  490,  700,  1210,  900,  770,  400],
-          ['Jan-17',  1000,  400,  800,  200,  300,  500,  1200,  900,  690,  400],
-          ['Feb-17',  1150,  460,  900,  300,  440,  540,  1300,  990,  650,  600],
-          ['Mar-17',  960,   600,  850,  400,  500,  520,  1400,  890,  780,  400],
-          ['Apr-17',  970,  440,  700,  340,  600,  560,  1290,  980,  800,  400],
-          ['May-17',  830,  540,  900,  390,  500,  510,  1190,   1010,  720,  400],
-          ['Jun-17',  1030,  640,  1000,  400,  410,  600,  1160,  1000,  800,  600],
+          ['Year', $scope.proposition[0].name, $scope.proposition[1].name, $scope.proposition[2].name, $scope.proposition[3].name,
+           $scope.proposition[4].name,$scope.proposition[5].name, $scope.proposition[6].name, $scope.proposition[7].name,
+           $scope.proposition[8].name,$scope.proposition[9].name,$scope.proposition[10].name,$scope.proposition[11].name,
+           $scope.proposition[12].name,$scope.proposition[13].name,$scope.proposition[14].name],
+          [$scope.month[12].name,  1000,  400,  800,  200,  300,  500,  1200,  900,  690,  400,  500,  1230,  900,  690,  400],
+          [$scope.month[11].name,  1150,  460,  900,  300,  440,  540,  1300,  990,  650,  600,  500,  720,  900,  690,  400],
+          [$scope.month[10].name,  960,   600,  850,  400,  500,  520,  1400,  890,  780,  400,  500,  1200,  900,  690,  400],
+          [$scope.month[9].name,  970,  440,  700,  340,  600,  560,  1290,  980,  800,  400,  500,  1200,  900,  690,  400],
+          [$scope.month[8].name,  830,  540,  900,  390,  500,  510,  1190,   1010,  720,  400,  500,  1200,  900,  690,  400],
+          [$scope.month[7].name,  1030,  640,  1000,  400,  410,  600,  1160,  1000,  800,  600,  500,  1200,  900,  690,  400],
+          [$scope.month[6].name,  1230,  320,  890,  450,  490,  700,  1210,  900,  770,  400,  500,  1200,  900,  690,  400],
+          [$scope.month[5].name,  1000,  400,  800,  200,  300,  500,  1200,  900,  690,  400,  500,  1200,  900,  690,  400],
+          [$scope.month[4].name,  1150,  460,  900,  300,  440,  540,  1300,  990,  650,  600,  500,  1200,  900,  690,  400],
+          [$scope.month[3].name,  960,   600,  850,  400,  500,  520,  1400,  890,  780,  400,  500,  1200,  900,  690,  400],
+          [$scope.month[2].name,  970,  440,  700,  340,  600,  560,  1290,  980,  800,  400,  500,  1200,  900,  690,  400],
+          [$scope.month[1].name,  830,  540,  900,  390,  500,  510,  1190,   1010,  720,  400,  500,  1200,  900,  690,  400],
+          [$scope.month[0].name,  1030,  640,  1000,  400,  410,  600,  1160,  1000,  800,  600,  500,  1200,  900,  690,  400],
         ]);
 
         var options = {
@@ -68,8 +115,8 @@ angular.module('app')
 
         chart.draw(data, options);
       }
-      $(window).resize(function(){
-    	  drawChart();
-    	});
+     //  $(window).resize(function(){
+    	//   drawChart();
+    	// });
       ////
 });

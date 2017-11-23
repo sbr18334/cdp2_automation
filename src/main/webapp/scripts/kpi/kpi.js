@@ -3,10 +3,13 @@ angular.module('app')
 
 /////////////////////////////////functions to be implemented on kpi page load/////////////////////////////////
   $("#kpi").hide();
-  $(".fa-spin").show();
+  $(".fa-spinner").show();
+  $(".fa-refresh").hide();
   // $scope.$on('$viewContentLoaded', function() {
     $scope.update = function(){
-      get($scope.month.selectedOption,$scope.proposition.selectedOption)
+      $(".fa-refresh").show();
+      $("#kpi_info").css('opacity','0');
+      get($scope.month.selectedOption,$scope.proposition.selectedOption);
     }
 
     if($scope.month == null || $scope.proposition == null){
@@ -36,7 +39,9 @@ angular.module('app')
           $rootScope.proposition = response.data;
           $rootScope.proposition.selectedOption = response.data[0];
           $("#kpi").show();
-          $(".fa-spin").hide();
+          $(".fa-spinner").hide();
+          $(".fa-refresh").show();
+          $("#kpi_info").css('opacity','0');
           if($rootScope.month != null){
             get($rootScope.month.selectedOption,$rootScope.proposition.selectedOption);
           } 
@@ -46,14 +51,14 @@ angular.module('app')
     else{
       get($rootScope.month.selectedOption,$rootScope.proposition.selectedOption);
       $("#kpi").show();
-      $(".fa-spin").hide();
+      $(".fa-spinner").hide();
+      $(".fa-refresh").show();
+      $("#kpi_info").css('opacity','0');
      }
 // });
   function get(a,b){
 
-    //$scope.month = a;
     $scope.month.selectedOption = a;
-    //$scope.proposition = b;
     $scope.proposition.selectedOption = b
 
       $http({
@@ -95,7 +100,10 @@ angular.module('app')
           }
       }).then(function(response){
           $scope.suggestionData = response.data;
-          console.log($scope.suggestionData);
+          if(response.data.length == '0'){
+            $scope.suggestionData=[{"key_insights":"No suggestions Available!!!"}]
+            //$("#data").html("<span style='margin-left:30%;padding:10px;'>No suggestions Available!!!</span>");
+          };
       })
 
       $http({
@@ -133,9 +141,9 @@ angular.module('app')
           $scope.metricData_23 = Math.round(response.data[0].marketable_reg_rate_delta * 100) / 100;
           $scope.metricData_24 = Math.round(response.data[0].buybuttonclicks * 100) / 100;
           $scope.metricData_25 = Math.round(response.data[0].buybuttonclicks_delta * 100) / 100;
-          console.log(response.data)
           $("#kpi").show();
-          $(".fa-spin").hide();
+          $("#kpi_info").css('opacity','1');
+          $(".fa-refresh").hide();
         }
         else{
           $scope.metricData_0 = $scope.metricData_1 = $scope.metricData_2 = $scope.metricData_3 = 
@@ -144,7 +152,10 @@ angular.module('app')
           $scope.metricData_12 = $scope.metricData_13 = $scope.metricData_14 = $scope.metricData_15 =  
           $scope.metricData_16 = $scope.metricData_17 = $scope.metricData_18 = $scope.metricData_19 = 
           $scope.metricData_20 = $scope.metricData_21 = $scope.metricData_22 = $scope.metricData_23 = 
-          $scope.metricData_24 = $scope.metricData_25 = "N/A"
+          $scope.metricData_24 = $scope.metricData_25 = "N/A";
+          $("#kpi").show();
+          $("#kpi_info").css('opacity','1');
+          $(".fa-refresh").hide();
         }
       })
 
@@ -156,46 +167,126 @@ angular.module('app')
   $scope.edit1 = 0;
 
 	$('#tabs div:nth-child(2)').css('background-color','#EAEEE9');
-    $('#tabs div:nth-child(2)').css('color','#107ABA');
-    $('#tabs div:not(:nth-child(2))').css('background-color','#107ABA');
-    $('#tabs div:not(:nth-child(2))').css('color','#EAEEE9');
+  $('#tabs div:nth-child(2)').css('color','#107ABA');
+  $('#tabs div:not(:nth-child(2))').css('background-color','#107ABA');
+  $('#tabs div:not(:nth-child(2))').css('color','#EAEEE9');
 
-    $('#view').css('border-bottom','3px solid green');
-    $('#view').css('font-weight','bold');
+  $('#view').css('border-bottom','3px solid green');
+  $('#view').css('font-weight','bold');
 
-    $('#data div #eddlt').hide();
-
-    $('#data div').mouseover(function(){
-      if($scope.edit1 == 1){$('#data div #eddlt').show();}
-    })
-    $("#data div").mouseout(function(){
-      if($scope.edit1 == 1){$('#data div #eddlt').hide();}
-    })
+  $('#data div #eddlt').hide();
 
   $("#goedit").hide();
+  $scope.prev = 1;
 
-  $scope.deleteSuggestion = function(){
+  $scope.hoverIn = function(n){
+    // if($scope.edit1 == 1){
+    //   $('#'+n+' #eddlt').css('display','block');
+    //   $('#'+n+' #eddlt').css('backgroundColor','white');
+    // }
+  }
+  $scope.hoverOut = function(n){
+    // if($scope.edit1 == 1){
+    //   $('#'+n+' #eddlt').css('display','none');
+    // }
+  }
+  $scope.click = function(n){
+    if($scope.edit1 == 1){
+      $('#'+$scope.prev+' #eddlt').css('display', 'none');
+      $('#'+n).css('backgroundColor','white');
+      $('#'+n+' #eddlt').css('display','block');
+      //$('#data:not(#'+n+')').css('backgroundColor', '#D3D3D3');
+      $('#data > div').not('#'+n).css('backgroundColor', '#D3D3D3');
+      //$('#data > div #eddlt').not('#'+n).css('display', 'none');
+      $("#goedit").hide();
+      $("#focus").show();
+      $scope.prev = n;
+    }
+    else{
+      alert("switch to edit tab to edit the suggestion");
+    }
+  }
+  $(document).click(function(e) {
+    if (e.target.id != 'suggestions' && !$('#suggestions').find(e.target).length) {
+        $("#goedit").hide();
+        $("#focus").show();
+        $('#data > div').css('backgroundColor', '#D3D3D3');
+        $('#'+$scope.prev+' #eddlt').css('display', 'none');
+        $('#addButton').css('display','inline');
+        $('#fields').remove();
+        $('#sug_info').html('Suggestions:');
+        $window.scroll({
+          top: 0, 
+          left: 0, 
+          behavior: 'smooth' 
+        });
+    }
+  });
+
+  $scope.deleteSuggestion = function(index,n){
     //deleting the suggestion
+    $(".fa-refresh").show();
+    $("#kpi_info").css('opacity','0');
+      $http({
+          method: 'GET',
+          url: '/Redshift',
+          params: {
+            sql: "delete from cdp2monthlyrpt.monthlyrpt_recomendation where cdp2monthlyrpt.monthlyrpt_recomendation.recommendations='"+n.recommendations+"' and cdp2monthlyrpt.monthlyrpt_recomendation.key_insights='"+n.key_insights+"'",
+            details: ""
+          }
+      }).then(function(response){
+        $('#'+index).remove();
+        $("#kpi_info").css('opacity','1');
+        $(".fa-refresh").hide();
+        alert("deleted succesfully");
+      })
   }
 
-  $scope.editSuggestion = function(){
+  $scope.editSuggestion = function(index,n){
     //editing the suggestion
       $("#goedit").show();
       $("#focus").hide();
+      //$('#mySelect').val(n.prio);
+      $scope.priority.selectedOption.id = n.prio;
+      $scope.priority.selectedOption.name = n.prio;
+      if(n.theme == 'Scale'){$scope.theme.selectedOption.id = '1';}
+      else if(n.theme == 'Health'){$scope.theme.selectedOption.id = '2';}
+      else if(n.theme == 'Retention'){$scope.theme.selectedOption.id = '3';}
+      else if(n.theme == 'Advocacy'){$scope.theme.selectedOption.id = '4';}
+      if(n.status == 'Implemented'){$scope.status.selectedOption.id = '1';}
+      else if(n.status == 'Not committed'){$scope.status.selectedOption.id = '2';}
+      else if(n.status == 'In progress'){$scope.status.selectedOption.id = '3';}
+      else if(n.status == 'Rejected by business'){$scope.status.selectedOption.id = '4';}
   }
 
   $scope.updateSuggestion = function(){
     //updating the suggestion
-    alert("Suggestion has been updated succesfully");
-    location.reload();
+
+    $(".fa-refresh").show();
+    $("#kpi_info").css('opacity','0');
+      $http({
+          method: 'GET',
+          url: '/Redshift',
+          params: {
+            sql: "INSERT INTO domo.cdp2monthlyrpt.monthlyrpt_recomendation (id, month, status, prio, proposition, theme, key_insights, recommendations) VALUES ((SELECT ISNULL(MAX(id) + 1, 0) FROM domo.cdp2monthlyrpt.monthlyrpt_recomendation),(SELECT month from domo.cdp2monthlyrpt.months where month_des='"+$scope.month.selectedOption.name+"'),'"+$scope.status.selectedOption.name+"','"+$scope.priority.selectedOption.name+"','"+$scope.proposition.selectedOption.name+"','"+$scope.theme.selectedOption.name+"','"+$scope.key+"','"+$scope.recom+"');",
+            details: ""
+          }
+      }).then(function(response){
+        console.log(response.data);
+        $('#addButton').css('display','inline');
+        $('#fields').remove();
+        $('#sug_info').html('Suggestions:');
+        get($scope.month.selectedOption,$scope.proposition.selectedOption);
+        })
   }
+
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   $scope.priority = {
     availableOptions: [
-      {id:'1',name: '1'},{id:'2',name: '2'}
+      {id:'1',name: '1'},{id:'2',name: '2'},{id:'3',name: '3'}
     ],
-    selectedOption: {id: '1', name: '1'}
+    selectedOption: {id: '2', name: '2'}
     };
 
   $scope.theme = {
@@ -208,9 +299,9 @@ angular.module('app')
 
   $scope.status = {
     availableOptions: [
-      {id:'1',name: 'Implemented'},{id:'2',name: 'Not Committed'},{id:'3',name: 'In Progress'}
+      {id:'1',name: 'Implemented'},{id:'2',name: 'Not Committed'},{id:'3',name: 'In Progress'},{id:'4',name: 'Rejected'}
     ],
-    selectedOption: {id: '1', name: 'Implemented'}
+    selectedOption: {id: '2', name: 'Not Committed'}
     };
 
   ///functions///////
@@ -257,19 +348,28 @@ angular.module('app')
     location.reload();
   }
 
-  $('.fa-plus-circle').click(function(){
+  $('#addButton').click(function(){
       if($scope.edit1!=0){
-        $(window).scrollTop(210);
-        $("#goedit").show();
-        $("#focus").hide();
-        $('.fa-plus-circle').css('display','none');
+        $('#sug_info').html('Add Suggestion:');
+        $window.scroll({
+          top: 210, 
+          left: 0, 
+          behavior: 'smooth' 
+        });
+        $('#addButton').css('display','none');
         //alert($scope.month.selectedOption.name);
         //alert('You clicked row '+ ($(this).index()+1) );
         //$scope.metric = $(this).find('td:nth-child(2)').text();
-        $('#data').append($compile('<span style="font-weight:bold;">New Suggestion:</span><br><input autofocus="autofocus" type="text" id="current Name" value=""'
-          +'ng-model="data1" style="margin-bottom:2px;width:100%;font-weight:bold;text-transform: capitalize"/><br><textarea'
-          +' ng-model ="data2" rows="2" style="width:100%;"/>&nbsp;<i ng-click="addData(metric)" class="fa fa-plus-circle fa-lg"' 
-          +'aria-hidden="true"></i>')($scope));
+        $('#add').append($compile('<div id="fields" style="margin-top:-20px;"><br><input autofocus="autofocus" type="text" id="current Name" value=""'
+          +'ng-model="key" style="margin-bottom:3px;margin-top:15px;border-radius:8px;padding-left:5px;width:95%;font-weight:bold;text-transform: capitalize"/><br>'
+          +'<textarea ng-model ="recom" rows="2" style="width:95%;border-radius:8px;padding-left:5px;"/><br>'
+          +'<div><div id="theme_drpdown"><select ng-options="option.name for option in theme.availableOptions track by option.id" ng-model="theme.selectedOption"></select></div>'
+          +'<div id="status_drpdown"><select name="mySelect" id="mySelect" ng-options="option.name for option in status.availableOptions track by option.id" ng-model="status.selectedOption"></select></div>'
+          +'<div id="priority_drpdown"><select name="mySelect" id="mySelect" ng-options="option.name for option in priority.availableOptions track by option.id" ng-model="priority.selectedOption"></select></div>'
+          +'<div id="go"><i class="fa fa-arrow-right" aria-hidden="true" ng-click="updateSuggestion()"></i></div></div></div>')($scope));
+      }
+      else{
+        alert("switch to edit tab to add the suggestion");
       }
 
   });

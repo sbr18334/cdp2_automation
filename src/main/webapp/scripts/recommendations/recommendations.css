@@ -1,0 +1,138 @@
+#excel{
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 20px;
+    padding: 20px 20px 20px 20px;
+}
+input[type=submit]{
+	cursor: pointer;
+    margin-left: 10px;
+    padding: 3px 20px 3px 20px;
+    border-radius: 20px;
+    color: black;
+    background-color: silver;
+}
+#fileupload{
+	padding: 2px 5px 2px 5px;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    background: #808080;
+}
+#tabledata{
+	margin-top: 20px;
+}
+span{
+	color: white;
+	font-weight: bold;
+	margin-left: 5px;
+}
+table, th, td  {
+	border: 1px solid grey;
+	border-collapse: collapse;
+	padding: 2px 20px 2px 20px;
+	background-color: white;/*#2a99ef;*/
+	text-align: center;
+	margin: 0px 30px 0px 0px;
+	font-size: 14px;
+}
+th{
+	background-color: #808080;
+	border-bottom: 1px solid white;
+	border-right: 1px solid white;
+	color: white;
+	font-weight: normal;
+}
+table, td{
+	border:1px solid black;
+	text-align: center;
+	padding: 7px 7px 7px 4px;
+	height: 30px;
+}
+.fa-spin{
+	font-size: 90px;
+	margin-left: 45%;
+	margin-top: 15%;
+	margin-bottom:28%;
+}
+h5{
+	text-align: center;
+}
+#head{
+	color: white;
+	height: 50px;
+	margin-top: 10px;
+	border-radius: 10px;
+}
+#new{
+	margin-top: 15px;
+	display: inline-block;
+}
+#count{
+	margin-top: -5px;
+	display: inline-block;
+	float: right;
+	margin-right: 60px;
+	color: black;
+}
+#addButton{
+	background-color: #107ABA;
+	margin-left: 5%;
+	padding: 5px 10px 5px 10px; 
+	border-radius: 10px;
+	display: inline;
+	color: white;
+	cursor: pointer;
+}
+#theme_drpdown{
+	display: inline;
+}
+select{
+	cursor: pointer;
+	margin-right: 3px;
+	width: 175px;
+	padding: 5px;
+	border-radius: 5px;
+}
+#status_drpdown{
+	display: inline-block;
+	font-family: calibri;
+	color: #107ABA;
+}
+#priority_drpdown{
+	display: inline-block;
+	font-family: calibri;
+	color: #107ABA;
+}
+#priority_drpdown select{
+	width: 60px;
+	padding: 5px;
+}
+#month_drpdown{
+	display: inline;
+	margin-left: 35px;
+}
+#proposition_drpdown{
+	display: inline-block;
+}
+#go{
+	cursor: pointer;
+	display: inline-block;
+	border-radius: 60%;
+	background-color: white;
+	padding: 7px;
+	margin-left: 1%;
+}
+#fields_rec{
+	margin-right: 30px;
+	padding: 30px;
+    background: linear-gradient(to right,#898989, #6F6E6E, #494747);
+    border-radius: 10px;
+}
+#close{
+	cursor: pointer;
+	float: right;
+	border-radius: 8px;
+	background-color: white;
+	padding: 6px 3px 6px 3px; 
+}

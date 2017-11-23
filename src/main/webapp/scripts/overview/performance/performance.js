@@ -6,16 +6,16 @@ angular.module('app')
 
 	$('#chart').show();
 
-    $scope.data = $rootScope.data;
-    $scope.month = $rootScope.current_month;
-    $scope.total = $rootScope.total;
+    // $scope.data = $rootScope.data;
+    // $scope.month = $rootScope.current_month;
+    // $scope.total = $rootScope.total;
 
     $('.fa-spin').show();
     $('table').hide();
 
 	//data
 
-    if($rootScope.data == null || $rootScope.total == null){
+    // if($rootScope.data == null || $rootScope.total == null){
 	
       $http({
           method: 'GET',
@@ -28,21 +28,21 @@ angular.module('app')
           for(var i=0;i<response.data.length;i++){
             if(response.data[i].proposition == 'Total'){
                 $scope.total = response.data[i];
-                $rootScope.total = $scope.total;
+                // $rootScope.total = $scope.total;
                 response.data.splice(i,1);
             }
           }
           $scope.data = response.data;
-          $rootScope.data = $scope.data;
+          // $rootScope.data = $scope.data;
           $scope.month = response.data[0].month;
-          $rootScope.current_month = $scope.month;
+          // $rootScope.current_month = $scope.month;
           $('.fa-spin').hide();
           $('table').show();
       })
-    }
-    else{
-        $('.fa-spin').hide();
-        $('table').show();
-    }
+    // }
+    // else{
+    //     $('.fa-spin').hide();
+    //     $('table').show();
+    // }
 
 });

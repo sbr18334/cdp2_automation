@@ -8,17 +8,17 @@
    <name>Dashboard Maven Webapp</name>
    <url>http://maven.apache.org</url>
    <properties>
-	<maven.compiler.source>1.7</maven.compiler.source>
-	<maven.compiler.target>1.7</maven.compiler.target>
+  <maven.compiler.source>1.7</maven.compiler.source>
+  <maven.compiler.target>1.7</maven.compiler.target>
    </properties>
    <repositories>
    <repository>
-	<id>mashape-snapshots</id>
-	<url>http://maven.mashape.com/snapshots</url>
+  <id>mashape-snapshots</id>
+  <url>http://maven.mashape.com/snapshots</url>
 </repository>
 <repository>
-	<id>mashape-releases</id>
-	<url>http://maven.mashape.com/releases</url>
+  <id>mashape-releases</id>
+  <url>http://maven.mashape.com/releases</url>
 </repository>
    </repositories>
    <dependencies>
@@ -29,59 +29,59 @@
          <scope>test</scope>
       </dependency>
      <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
-	<dependency>
-	    <groupId>org.apache.httpcomponents</groupId>
-	    <artifactId>httpclient</artifactId>
-	    <version>4.5.3</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpcore -->
-	<dependency>
-	    <groupId>org.apache.httpcomponents</groupId>
-	    <artifactId>httpcore</artifactId>
-	    <version>4.4.6</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
-	<dependency>
-	    <groupId>commons-logging</groupId>
-	    <artifactId>commons-logging</artifactId>
-	    <version>1.1.1</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
-	<dependency>
-	        <groupId>javax.servlet</groupId>
-	        <artifactId>javax.servlet-api</artifactId>
-	        <version>3.0.1</version>
-	</dependency>
-	<dependency>
-	        <groupId>org.apache.tomcat</groupId>
-	        <artifactId>tomcat-servlet-api</artifactId>
-	        <version>8.5.12</version>
-	        <scope>provided</scope>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
-	<dependency>
-	    <groupId>com.googlecode.json-simple</groupId>
-	    <artifactId>json-simple</artifactId>
-	    <version>1.1</version>
-	</dependency>
-	
-	<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
-	<dependency>
-	    <groupId>com.google.code.gson</groupId>
-	    <artifactId>gson</artifactId>
-	    <version>2.8.0</version>
-	</dependency>
-	<!--https://mvnrepository.com/artifact/org.json/json  -->
-	<dependency>
-	    <groupId>org.json</groupId>
-	    <artifactId>json</artifactId>
-	    <version>20160810</version>
-	</dependency>
-	<dependency>
+  <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.5.3</version>
+  </dependency>
+  <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpcore -->
+  <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpcore</artifactId>
+      <version>4.4.6</version>
+  </dependency>
+  <!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
+  <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+      <version>1.1.1</version>
+  </dependency>
+  <!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
+  <dependency>
+          <groupId>javax.servlet</groupId>
+          <artifactId>javax.servlet-api</artifactId>
+          <version>3.0.1</version>
+  </dependency>
+  <dependency>
+          <groupId>org.apache.tomcat</groupId>
+          <artifactId>tomcat-servlet-api</artifactId>
+          <version>8.5.12</version>
+          <scope>provided</scope>
+  </dependency>
+  <!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
+  <dependency>
+      <groupId>com.googlecode.json-simple</groupId>
+      <artifactId>json-simple</artifactId>
+      <version>1.1</version>
+  </dependency>
+  
+  <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+  <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.8.0</version>
+  </dependency>
+  <!--https://mvnrepository.com/artifact/org.json/json  -->
+  <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20160810</version>
+  </dependency>
+  <dependency>
     <groupId>org.webjars</groupId>
     <artifactId>angular-protractor</artifactId>
     <version>1.6.1</version>
-	</dependency>
+  </dependency>
 <!-- https://mvnrepository.com/artifact/javax.activation/activation -->
 <dependency>
     <groupId>javax.activation</groupId>
@@ -89,7 +89,7 @@
     <version>1.1</version>
 </dependency>
 
-	<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+  <!-- https://mvnrepository.com/artifact/javax.mail/mail -->
 <dependency>
     <groupId>javax.mail</groupId>
     <artifactId>mail</artifactId>
@@ -101,16 +101,14 @@
       <artifactId>redshift.jdbc41</artifactId>
       <version>1.2.10.1009</version>
   </dependency>
-
-
    </dependencies>
    
    <build>
    <resources>
     <resource>
-                <directory>src/main/webapp/scripts</directory>
-                <filtering>true</filtering>
-            </resource>
+      <directory>src/main/webapp/scripts</directory>
+      <filtering>true</filtering>
+    </resource>
    </resources>
       <finalName>ROOT</finalName>
       <plugins>

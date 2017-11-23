@@ -65,7 +65,6 @@ public class BenchmarksJdbcConnection extends HttpServlet {
               //Retrieve two columns.
             if(details.equals("metric")){
               name = rs.getString("metric_name");
-            }
 
               JSONObject jobj = new JSONObject();
               jobj.put("id", id);
@@ -73,7 +72,43 @@ public class BenchmarksJdbcConnection extends HttpServlet {
               jArray.add(jobj);
 
               id = id+1;
-           }
+            }
+            else if(details.equals("data")){
+              String month = rs.getString("month_des");
+              String proposition = rs.getString("proposition");
+              Float mt_data = rs.getFloat(2);
+
+              JSONObject jobj = new JSONObject();
+              jobj.put("month", month);
+              jobj.put("proposition", proposition);
+              jobj.put("mt_data", mt_data);
+              jArray.add(jobj);
+            }
+            else if(details.equals("recommendation")){
+              id = rs.getInt("id");
+              String month = rs.getString("month");
+              String status = rs.getString("status");
+              String priority = rs.getString("prio");
+              String proposition = rs.getString("proposition");
+              String theme = rs.getString("theme");
+              String key_insights = rs.getString("key_insights");
+              String recommendations = rs.getString("recommendations");
+              
+
+              JSONObject jobj = new JSONObject();
+              jobj.put("id", id);
+              jobj.put("month", month);
+              jobj.put("status", status);
+              jobj.put("priority", priority);
+              jobj.put("proposition", proposition);
+              jobj.put("theme", theme);
+              jobj.put("key_insights", key_insights);
+              jobj.put("recommendations", recommendations);
+
+              jArray.add(jobj);
+            }
+
+          }
 
               name = jArray.toString();
               System.out.println(name);
