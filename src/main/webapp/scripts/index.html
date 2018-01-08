@@ -48,9 +48,13 @@
             <div id="philips"><img src="assets/philips_logo.png" style="border-bottom-left-radius: 32px;border-bottom-right-radius: 32px;"></div>
             <div id="cdp2"><img src="assets/cdp2_logo.png"></div>
             <div id="title">CDP2 Analytics - The story</div>
-            <div id="icons">
+            <div id="icons" class="welcome">You have succesfully logged in</div>
+            <div id="icons" class="icons">
                 <div ui-sref="performance"><i class="fa fa-home fa-lg" aria-hidden="true"></i></div>
-                <div><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></div>
+                <div id="userinfo">
+                    <i class="fa fa-user fa-lg" aria-hidden="true"></i>
+                    <span id="tooltiptext">Role:&nbsp;<b>{{user}}</b></span>
+                </div>
                 <div ng-click="print()"><i class="fa fa-print fa-lg" aria-hidden="true"></i></div>
                 <div ng-click="logout()"><i class="fa fa-power-off fa-lg" aria-hidden="true"></i></div>
             </div>

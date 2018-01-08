@@ -2,18 +2,65 @@
 <div id="recommendationPage">
 	<div id="head">
 		<div id="new">
-            <div id="addButton" ng-click="addRecommendation()">
-                <i class="fa fa-plus-circle fa-lg" aria-hidden="true" style="border-radius:50%;"></i>
-                <span>Add Recommendation</span>
+             <div id="addButton1">
+            <!-- Trigger/Open The Modal -->
+            <button id="myBtn">Add Suggestion</button>
             </div>
         </div>
-		<div id="count"><h5>Displaying {{length}} Recommendations</h5></div>
+		<div id="count"><h4>Displaying <b>{{length}}</b> Recommendations</h4></div>
 	</div>
-	<div id="fields_rec">
+    <div id="status_filter">
+        <span style="color:black;margin-right:10px;font-weight:bold;">Status:</span>
+        <select name="mySelect" id="select_filter"
+          ng-options="option.name for option in status_filter.availableOptions track by option.id"
+          ng-model="status_filter.selectedOption" ng-change="filter()">    
+        </select>
+        <span style="color:black;margin:0px 10px 0px 10px;font-weight:bold;">Proposition:</span>
+        <select name="mySelect" id="mySelect"
+          ng-options="option.name for option in proposition_filter track by option.id"
+          ng-model="proposition_filter.selectedOption" ng-change="filter()">    
+        </select>
+        <!-- <i class="fa fa-filter" aria-hidden="true"></i> -->
+    </div>
+	<div id="tabledata">
+		<table id="table_rec">
+		    <tr>
+		    	<th>ID</th><th>Month</th><th>Priority</th>
+		        <th>Proposition</th><th>Key_insights</th>
+		    	<th>Recommendations</th><th>Status</th><th>Theme</th>
+          <th>Ticket</th><th>Deadline</th><th>Outcome</th><th>Action</th>
+		    </tr>
+		    <tr ng-repeat="n in suggestionData track by $index" id="{{$index}}">
+		    	<td>{{n.id}}</td>
+		    	<td>{{n.month}}</td>
+                <td>{{n.priority}}</td>
+		        <td>{{n.proposition}}</td><td>{{n.key_insights}}</td>
+		    	<td>{{n.recommendations}}</td><td>{{n.status}}</td>   	
+		    	<td>{{n.theme}}</td>
+          <td>{{n.ticket}}</td>
+          <td>{{n.deadline}}</td>
+          <td>{{n.outcome}}</td>
+          <td><button ng-click="openmodal()" style="border: 0px;padding: 5px 7px 5px 7px;color: white;border-radius: 5px;cursor: pointer;background-color: #107ABA;"><i class="fa fa-pencil" aria-hidden="true"></button></i></td>
+		    </tr>
+		</table>
+	</div>
+  <div id="top" ng-click="toTop()"><i class="fa fa-arrow-up" aria-hidden="true"></i></div>
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Add Suggestion:</h2>
+    </div>
+    <div class="modal-body">
+    <div id="fields_rec">
         <div id="month_drpdown">
             <span>Month:</span>
-        	<select ng-options="option.name for option in month track by option.id" ng-model="month.selectedOption">
-        	</select>
+            <select ng-options="option.name for option in month track by option.id" ng-model="month.selectedOption">
+            </select>
         </div>
         <div id="proposition_drpdown">
             <span>Proposition:</span>
@@ -41,29 +88,52 @@
               ng-model="priority.selectedOption">    
             </select>
         </div>
-        <div id="close" ng-click="close()"><i class="fa fa-times" aria-hidden="true"></i></div>
-        <div style="margin-top:5px;">
-	        <span>Key_insight:</span><input autofocus="autofocus" type="text" id="current Name" ng-model="key" style="margin:10px 10px 3px 5px;border-radius:8px;padding:8px;width:350px;font-weight:bold;text-transform: capitalize"/>
-	        <span>Recommendation:</span><textarea ng-model="recom" rows="2" style="width:615px;margin-left:5px;border-radius:8px;display:inline-block;padding-left:5px;margin-bottom:-14px"></textarea>   
-	        <div id="go" ng-click="updateRecommendaiton()">
-	            <i class="fa fa-arrow-right" aria-hidden="true"></i>
-	        </div>
-	    </div>
-	</div>
-	<div id="tabledata">
-		<table>
-		    <tr>
-		    	<th>ID</th><th>Month</th><th>Priority</th>
-		        <th>Proposition</th><th>Key_insights</th>
-		    	<th>Recommendations</th><th>Status</th><th>Theme</th>
-		    </tr>
-		    <tr ng-repeat="n in suggestionData track by $index">
-		    	<td>{{n.id}}</td>
-		    	<td>{{n.month}}</td><td>{{n.priority}}</td>
-		        <td>{{n.proposition}}</td><td>{{n.key_insights}}</td>
-		    	<td>{{n.recommendations}}</td><td>{{n.status}}</td>   	
-		    	<td>{{n.theme}}</td>
-		    </tr>
-		</table>
-	</div>
+        <div>
+            <span style="margin-left:82px;">Ticket:</span><input autofocus="autofocus" type="text" id="current Name" ng-model="ticket" style="margin:10px 10px 3px 5px;border-radius:8px;padding:6px;width:280px;font-weight:bold;"/><br>
+            <span style="margin-left:62px;">Deadline:</span><input id="date" type="date" style="border-radius:5px;margin:5px 0px 0px 5px;" ng-model="deadline"><br>
+            <span style="margin-left:45px;">Key_insight:</span><input autofocus="autofocus" type="text" id="current Name" ng-model="key" style="margin:7px 10px 3px 5px;border-radius:8px;padding:8px;width:430px;font-weight:bold;text-transform: capitalize"/><br>
+            <span>Recommendation:</span><textarea ng-model="recom" rows="4" style="width:682px;border-radius:8px;display:inline-block;padding-left:5px;margin:5px 0px -14px 5px;"></textarea>   
+            <div id="go" ng-click="addRecommendation()">
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<!-- The Modal -->
+<div id="myModal1" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Edit Suggestion:</h2>
+    </div>
+    <div class="modal-body">
+        <div id="editInfo">
+            <span style="margin-left: 117px;padding-right: 10px;">ID:</span>{{modal.id}}<br><br>
+            <span style="margin-left: 85px;padding-right: 10px;">Month:</span>{{modal.month}}<br><br>
+            <span style="margin-left: 53px;padding-right: 10px;">Proposition:</span>{{modal.proposition}}<br><br>
+            <span style="margin-left: 85px;padding-right: 10px;">Theme:</span>{{modal.theme}}<br><br>
+            <span style="margin-left: 48px;padding-right: 10px;">Key_insights:</span>{{modal.key_insights}}<br><br>
+            <span style="padding-right: 10px;">Recommendations:</span>{{modal.recommendations}}<br><br>
+            <span style="margin-left: 80px;padding-right: 8px;">Priority:</span>
+            <select name="mySelect" id="mySelect"
+              ng-options="option.name for option in priority.availableOptions track by option.id"
+              ng-model="priority.selectedOption" ng-change="enableButton('prio')">    
+            </select><br><br>
+            <span style="margin-left: 90px;padding-right: 7px;">Status:</span>
+            <select name="mySelect" id="mySelect"
+              ng-options="option.name for option in status.availableOptions track by option.id"
+              ng-model="status.selectedOption" ng-change="enableButton('status');">    
+            </select>
+            <input autofocus="autofocus" type="text" id="outcome" ng-model="outcome_value" style="margin:7px 10px 3px 5px;border-radius:8px;padding:8px;width:430px;font-weight:bold;" placeholder="Enter Outcome here" required/>
+            <input id="deadline" ng-model="date_value" type="date" style="border-radius:5px;margin:5px 0px 0px 5px;padding-left:5px;" placeholder="Deadline" required>
+            <div id="go1" ng-click="updateRecommendation()">
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </div>
+            <span id="error">Please fill the field</span>
+        </div>
+    </div>
+  </div>
 </div>

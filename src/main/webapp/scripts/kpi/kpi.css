@@ -35,6 +35,7 @@ select{/*
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;*/
+    border-radius: 10px;
     padding: 7px;
     font-weight: bold;
     box-shadow: 2px 2px 2px grey;
@@ -121,13 +122,25 @@ select{/*
 	margin-left: 30px;
 }
 #month_drpdown select{
-	width: 150px;
+	width: 140px;
 	padding: 7px;
+	border-radius: 5px;
+    background-color: rgb(234, 238, 233);
+    border: 1px solid silver;
+    box-shadow: 0px 0px;
+}
+#proposition_drpdown select{
+	width: 170px;
+	padding: 7px;
+	border-radius: 5px;
+    background-color: rgb(234, 238, 233);
+    border: 1px solid silver;
+    box-shadow: 0px 0px;
 }
 #proposition_drpdown{
 	display: inline-block;
-	margin-left: 1%;
-	width: 160px;
+	margin-left: 5px;
+	width: 180px;
 }
 #proposition{
 	font-family: calibri;
@@ -171,7 +184,7 @@ select{/*
 
 #theme_drpdown{
 	display: inline;
-	margin-left: 30px;
+	margin-left: 10px;
 }
 #theme_drpdown select{
 	width: 150px;

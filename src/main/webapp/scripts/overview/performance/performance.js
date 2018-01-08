@@ -21,7 +21,7 @@ angular.module('app')
           method: 'GET',
           url: '/Overview',
           params: {
-            sql: "select b.month_des, a.proposition, a.crashrate, a.crashrate_delta, a.firstlaunches, a.firstlaunches_delta, a.total_unique_visitors, a.total_unique_visitors_delta, a.thirty_ret_rate, a.thirty_ret_rate_delta, a.avg_weekly_launch_per_user, a.avg_weekly_launch_per_user_delta, a.total_avg_rating, a.total_avg_rating_delta, 0 as marketable_reg_rate,0 as marketable_reg_rate_delta From cdp2monthlyrpt.monthlyrpt_metric_all as a inner join cdp2monthlyrpt.months as b on a.month = b.month where a.month=(select max(month)from cdp2monthlyrpt.monthlyrpt_metric_all);",
+            sql: "select b.month_des,a.proposition, CAST(a.crashrate as decimal(18,2)), CAST(a.crashrate_delta as decimal(18,2)), a.firstlaunches,CAST(a.firstlaunches_delta as decimal(18,2)), a.total_unique_visitors, CAST(a.total_unique_visitors_delta as decimal(18,2)), CAST(a.thirty_ret_rate as decimal(18,2)), CAST(a.thirty_ret_rate_delta as decimal(18,2)), CAST(a.avg_weekly_launch_per_user as decimal(18,2)), CAST(a.avg_weekly_launch_per_user_delta as decimal(18,2)), CAST(a.total_avg_rating as decimal(18,2)), CAST(a.total_avg_rating_delta as decimal(18,2)), 0 as marketable_reg_rate,0 as marketable_reg_rate_delta From cdp2monthlyrpt.monthlyrpt_metric_all as a inner join cdp2monthlyrpt.months as b on a.month = b.month where a.month=(select max(month)from cdp2monthlyrpt.monthlyrpt_metric_all);",
             details: "performance"
           }
       }).then(function(response){

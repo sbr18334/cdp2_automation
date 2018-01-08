@@ -82,6 +82,8 @@ public class JDBCConnection extends HttpServlet {
               id = id+1;
             }
             else if(details.equals("suggestion")){
+              id = rs.getInt("id");
+
               String status  = rs.getString("status");
               int prio  = rs.getInt("prio");
               String theme  = rs.getString("theme");
@@ -89,6 +91,8 @@ public class JDBCConnection extends HttpServlet {
               String recommendations  = rs.getString("recommendations");
 
               JSONObject jobj = new JSONObject();
+              jobj.put("id", id);
+
               jobj.put("status", status);
               jobj.put("prio", prio);
               jobj.put("theme", theme);

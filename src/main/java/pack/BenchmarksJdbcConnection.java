@@ -93,6 +93,10 @@ public class BenchmarksJdbcConnection extends HttpServlet {
               String theme = rs.getString("theme");
               String key_insights = rs.getString("key_insights");
               String recommendations = rs.getString("recommendations");
+              String ticket = rs.getString("rally_ticket");
+              String deadline = rs.getString("deadline");
+              String outcome = rs.getString("outcome");
+
               
 
               JSONObject jobj = new JSONObject();
@@ -104,6 +108,10 @@ public class BenchmarksJdbcConnection extends HttpServlet {
               jobj.put("theme", theme);
               jobj.put("key_insights", key_insights);
               jobj.put("recommendations", recommendations);
+              jobj.put("ticket", ticket);
+              jobj.put("deadline", deadline);
+              jobj.put("outcome", outcome);
+
 
               jArray.add(jobj);
             }

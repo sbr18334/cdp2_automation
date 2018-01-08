@@ -95,7 +95,7 @@ angular.module('app')
           method: 'GET',
           url: '/Redshift',
           params: {
-            sql: "select cdp2monthlyrpt.monthlyrpt_recomendation.status,cdp2monthlyrpt.monthlyrpt_recomendation.prio,cdp2monthlyrpt.monthlyrpt_recomendation.theme,cdp2monthlyrpt.monthlyrpt_recomendation.key_insights,cdp2monthlyrpt.monthlyrpt_recomendation.recommendations from cdp2monthlyrpt.monthlyrpt_recomendation inner join cdp2monthlyrpt.months on cdp2monthlyrpt.monthlyrpt_recomendation.month = cdp2monthlyrpt.months.month inner join cdp2monthlyrpt.proposition_mapping on cdp2monthlyrpt.monthlyrpt_recomendation.proposition = cdp2monthlyrpt.proposition_mapping.proposition_recommendation where cdp2monthlyrpt.months.month_des='"+$scope.month.selectedOption.name+"' and cdp2monthlyrpt.proposition_mapping.proposition_domo ='"+$scope.proposition.selectedOption.name+"'",
+            sql: "select cdp2monthlyrpt.monthlyrpt_recomendation.id,cdp2monthlyrpt.monthlyrpt_recomendation.status,cdp2monthlyrpt.monthlyrpt_recomendation.prio,cdp2monthlyrpt.monthlyrpt_recomendation.theme,cdp2monthlyrpt.monthlyrpt_recomendation.key_insights,cdp2monthlyrpt.monthlyrpt_recomendation.recommendations from cdp2monthlyrpt.monthlyrpt_recomendation where upper(cdp2monthlyrpt.monthlyrpt_recomendation.month)='"+$scope.month.selectedOption.name+"' and cdp2monthlyrpt.monthlyrpt_recomendation.proposition ='"+$scope.proposition.selectedOption.name+"'",
             details: "suggestion"
           }
       }).then(function(response){
@@ -110,7 +110,7 @@ angular.module('app')
           method: 'GET',
           url: '/Redshift',
           params: {
-            sql: "select a.errorrate, a.errorrate_delta, a.crashrate, a.crashrate_delta, a.firstlaunches, a.firstlaunches_delta, a.total_unique_visitors, a.total_unique_visitors_delta, a.thirty_ret_rate_prospect,  a.thirty_day_retention_prospect_delta,  a.thirty_ret_rate_owner,a.thirty_day_retention_owner_delta, a.ninty_ret_rate, a.ninty_ret_rate_delta, a.avg_weekly_launch_per_user, a.avg_weekly_launch_per_user_delta, a.\"%engaged\", a.\"%engaged_delta\", a.total_avg_rating, a.total_avg_rating_delta, 0 as mat_avg_product_rating,0 as mat_avg_product_rating_delta,0 as marketable_reg_rate,0 as marketable_reg_rate_delta,a.buybuttonclicks, a.buybuttonclicks_delta From cdp2monthlyrpt.monthlyrpt_metric_all as a inner join cdp2monthlyrpt.months as b on a.month = b.month inner join cdp2monthlyrpt.proposition_mapping as c on a.proposition = c.proposition_domo where b.month_des='"+$scope.month.selectedOption.name+"' and c.proposition_domo='" +$scope.proposition.selectedOption.name+"'",
+            sql: "select a.errorrate, a.errorrate_delta, a.crashrate, a.crashrate_delta, a.firstlaunches, a.firstlaunches_delta, a.total_unique_visitors, a.total_unique_visitors_delta, a.thirty_ret_rate_prospect,  a.thirty_day_retention_prospect_delta,  a.thirty_ret_rate_owner,a.thirty_day_retention_owner_delta, a.ninty_ret_rate, a.ninty_ret_rate_delta, a.avg_weekly_launch_per_user, a.avg_weekly_launch_per_user_delta, a.\"%engaged\", a.\"%engaged_delta\", a.total_avg_rating, a.total_avg_rating_delta, 0 as mat_avg_product_rating,0 as mat_avg_product_rating_delta,0 as marketable_reg_rate,0 as marketable_reg_rate_delta,a.buybuttonclicks, a.buybuttonclicks_delta From cdp2monthlyrpt.monthlyrpt_metric_all as a inner join cdp2monthlyrpt.months as b on a.month = b.month inner join cdp2monthlyrpt.proposition_mapping as c on a.proposition = c.proposition_domo where b.month_des='"+$scope.month.selectedOption.name+"' and c.proposition_recommendation='" +$scope.proposition.selectedOption.name+"'",
             details: "metric"
           }
       }).then(function(response){
@@ -215,18 +215,23 @@ angular.module('app')
         $('#addButton').css('display','inline');
         $('#fields').remove();
         $('#sug_info').html('Suggestions:');
-        $window.scroll({
-          top: 0, 
-          left: 0, 
-          behavior: 'smooth' 
-        });
+        // $window.scroll({
+        //   top: 0, 
+        //   left: 0, 
+        //   behavior: 'smooth' 
+        // });
     }
   });
+
+
 
   $scope.deleteSuggestion = function(index,n){
     //deleting the suggestion
     $(".fa-refresh").show();
     $("#kpi_info").css('opacity','0');
+    $("#goedit").hide();
+    $("#focus").show();
+
       $http({
           method: 'GET',
           url: '/Redshift',
@@ -244,22 +249,44 @@ angular.module('app')
 
   $scope.editSuggestion = function(index,n){
     //editing the suggestion
-      $("#goedit").show();
-      $("#focus").hide();
-      //$('#mySelect').val(n.prio);
-      $scope.priority.selectedOption.id = n.prio;
-      $scope.priority.selectedOption.name = n.prio;
-      if(n.theme == 'Scale'){$scope.theme.selectedOption.id = '1';}
-      else if(n.theme == 'Health'){$scope.theme.selectedOption.id = '2';}
-      else if(n.theme == 'Retention'){$scope.theme.selectedOption.id = '3';}
-      else if(n.theme == 'Advocacy'){$scope.theme.selectedOption.id = '4';}
-      if(n.status == 'Implemented'){$scope.status.selectedOption.id = '1';}
-      else if(n.status == 'Not committed'){$scope.status.selectedOption.id = '2';}
-      else if(n.status == 'In progress'){$scope.status.selectedOption.id = '3';}
-      else if(n.status == 'Rejected by business'){$scope.status.selectedOption.id = '4';}
+    $scope.n = n;
+    $scope.id = n.id;
+    $("#goedit").show();
+    $("#focus").hide();
+    //$('#mySelect').val(n.prio);
+    $scope.priority.selectedOption.id = n.prio;
+    $scope.priority.selectedOption.name = n.prio;
+    if(n.theme == 'Scale'){$scope.theme.selectedOption.id = '1';}
+    else if(n.theme == 'Health'){$scope.theme.selectedOption.id = '2';}
+    else if(n.theme == 'Retention'){$scope.theme.selectedOption.id = '3';}
+    else if(n.theme == 'Advocacy'){$scope.theme.selectedOption.id = '4';}
+    else if(n.theme == 'Conversion'){$scope.theme.selectedOption.id = '5';}
+    else if(n.theme == 'Engagement'){$scope.theme.selectedOption.id = '6';}
+    if(n.status == 'Implemented'){$scope.status.selectedOption.id = '1';}
+    else if(n.status == 'Not Committed'){$scope.status.selectedOption.id = '2';}
+    else if(n.status == 'In Progress'){$scope.status.selectedOption.id = '3';}
+    else if(n.status == 'Rejected by business'){$scope.status.selectedOption.id = '4';}
   }
 
   $scope.updateSuggestion = function(){
+    $(".fa-refresh").show();
+    $("#kpi_info").css('opacity','0');
+    $("#goedit").hide();
+    $("#focus").show();
+    $('#'+$scope.prev+' #eddlt').css('display', 'none');
+    $http({
+          method: 'GET',
+          url: '/Redshift',
+          params: {
+            sql: "UPDATE domo.cdp2monthlyrpt.monthlyrpt_recomendation SET status = '"+$scope.status.selectedOption.name+"', prio = "+$scope.priority.selectedOption.name+" WHERE id = '"+$scope.n.id+"'",
+            details: ""
+          }
+      }).then(function(response){
+          get($scope.month.selectedOption,$scope.proposition.selectedOption);
+      })
+  }
+
+  $scope.addSuggestion = function(){
     //updating the suggestion
 
     $(".fa-refresh").show();
@@ -268,7 +295,7 @@ angular.module('app')
           method: 'GET',
           url: '/Redshift',
           params: {
-            sql: "INSERT INTO domo.cdp2monthlyrpt.monthlyrpt_recomendation (id, month, status, prio, proposition, theme, key_insights, recommendations) VALUES ((SELECT ISNULL(MAX(id) + 1, 0) FROM domo.cdp2monthlyrpt.monthlyrpt_recomendation),(SELECT month from domo.cdp2monthlyrpt.months where month_des='"+$scope.month.selectedOption.name+"'),'"+$scope.status.selectedOption.name+"','"+$scope.priority.selectedOption.name+"','"+$scope.proposition.selectedOption.name+"','"+$scope.theme.selectedOption.name+"','"+$scope.key+"','"+$scope.recom+"');",
+            sql: "INSERT INTO domo.cdp2monthlyrpt.monthlyrpt_recomendation (id, month, status, prio, proposition, theme, key_insights, recommendations, rally_ticket, deadline) VALUES ((SELECT ISNULL(MAX(id) + 1, 0) FROM domo.cdp2monthlyrpt.monthlyrpt_recomendation),'"+$scope.month.selectedOption.name+"','"+$scope.status.selectedOption.name+"','"+$scope.priority.selectedOption.name+"','"+$scope.proposition.selectedOption.name+"','"+$scope.theme.selectedOption.name+"','"+$scope.key+"','"+$scope.recom+"','"+$scope.ticket+"','"+$scope.deadline+"');",
             details: ""
           }
       }).then(function(response){
@@ -292,7 +319,7 @@ angular.module('app')
   $scope.theme = {
     availableOptions: [
       {id:'1',name: 'Scale'},{id:'2',name: 'Health'},{id:'3',name: 'Retention'},
-      {id:'4',name:'Advocacy'}
+      {id:'4',name:'Advocacy'},{id:'5',name: 'Conversion'},{id:'6',name: 'Engagement'}
     ],
     selectedOption: {id: '1', name: 'Scale'}
     };
@@ -306,18 +333,18 @@ angular.module('app')
 
   ///functions///////
   $scope.edit = function(){
-  $('#graphs').hide();
-  $('#graphs').css('opacity','0');
-  $('#graphs').css('transition','linear 0.5s')
-  $('#edit').css('border-bottom','3px solid green');
-  $('#edit').css('font-weight','bold');
-  $('#view').css('font-weight','normal');
-  $('#view').css('border-bottom','0px');
-  $scope.edit1 = 1;
+      $('#graphs').hide();
+      $('#graphs').css('opacity','0');
+      $('#graphs').css('transition','linear 0.5s')
+      $('#edit').css('border-bottom','3px solid green');
+      $('#edit').css('font-weight','bold');
+      $('#view').css('font-weight','normal');
+      $('#view').css('border-bottom','0px');
+      $scope.edit1 = 1;
   }
   $scope.view = function(){
-  $('#graphs').show()
-  location.reload();
+  $('#graphs').show();
+  //location.reload();
   $('#graphs').css('opacity','1');
   $('#view').css('border-bottom','3px solid green');
   $('#view').css('font-weight','bold');
@@ -361,12 +388,13 @@ angular.module('app')
         //alert('You clicked row '+ ($(this).index()+1) );
         //$scope.metric = $(this).find('td:nth-child(2)').text();
         $('#add').append($compile('<div id="fields" style="margin-top:-20px;"><br><input autofocus="autofocus" type="text" id="current Name" value=""'
-          +'ng-model="key" style="margin-bottom:3px;margin-top:15px;border-radius:8px;padding-left:5px;width:95%;font-weight:bold;text-transform: capitalize"/><br>'
-          +'<textarea ng-model ="recom" rows="2" style="width:95%;border-radius:8px;padding-left:5px;"/><br>'
+          +'ng-model="key" placeholder="key_insight" style="margin:15px 0px 3px 10px;border-radius:8px;padding-left:5px;width:95%;font-weight:bold;text-transform: capitalize"/><br>'
+          +'<textarea ng-model ="recom" placeholder="recommendation" rows="2" style="margin-left:10px;width:95%;border-radius:8px;padding-left:5px;"/><br>'
           +'<div><div id="theme_drpdown"><select ng-options="option.name for option in theme.availableOptions track by option.id" ng-model="theme.selectedOption"></select></div>'
           +'<div id="status_drpdown"><select name="mySelect" id="mySelect" ng-options="option.name for option in status.availableOptions track by option.id" ng-model="status.selectedOption"></select></div>'
-          +'<div id="priority_drpdown"><select name="mySelect" id="mySelect" ng-options="option.name for option in priority.availableOptions track by option.id" ng-model="priority.selectedOption"></select></div>'
-          +'<div id="go"><i class="fa fa-arrow-right" aria-hidden="true" ng-click="updateSuggestion()"></i></div></div></div>')($scope));
+          +'<div id="priority_drpdown"><select name="mySelect" id="mySelect" ng-options="option.name for option in priority.availableOptions track by option.id" ng-model="priority.selectedOption"></select></div><br>'
+          +'<span style="margin-left:10px;">Ticket:</span><input autofocus="autofocus" type="text" id="current Name" ng-model="ticket" style="margin:10px 10px 3px 5px;border-radius:8px;padding:6px;width:280px;font-weight:bold;text-transform: capitalize"/><br>'
+          +'<span style="margin-left:10px;">Deadline:</span><input id="date" type="date" style="border-radius:5px;margin:5px 0px 0px 5px;" ng-model="deadline"><div id="go"><i class="fa fa-arrow-right" aria-hidden="true" ng-click="addSuggestion()"></i></div></div></div>')($scope));
       }
       else{
         alert("switch to edit tab to add the suggestion");
