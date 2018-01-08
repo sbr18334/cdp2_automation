@@ -92,13 +92,15 @@
                 <div id="goedit">
 
                     <div style="font-weight:bold">
+                        <span style="margin-left:-25px;margin-right:30px;">ID</span>
                         <div style="display:inline-block;margin-bottom: 10px;margin-right: 120px;">Theme</div>
                         <div style="display:inline-block;">Status</div>
                         <div style="display:inline-block;margin-left: 80px;">Priority</div>
                     </div>
 
                     <div>
-                        <div id="theme_drpdown">
+                        <span><b>{{id}}</b></span>
+                        <div id="theme_drpdown" style="pointer-events:none">
                             <select ng-options="option.name for option in theme.availableOptions track by option.id" ng-model="theme.selectedOption">
                             </select>
                         </div>

@@ -5,9 +5,11 @@ angular.module('app',[])
 	  $(".loader").hide();
 	  
 	  if(localStorage.user !=null){
-		  $(".bg-wrapper").hide();
-		  window.location.href="/#/overview"
+	    $(".bg-wrapper").hide();
+		window.location.href="/#/overview"
 	  }
+
+	  localStorage.login_check = 0;
 	  
 	  $('#error_msg').hide();
 		
@@ -30,7 +32,7 @@ angular.module('app',[])
 				  $scope.homePage();
 				  }
 			  })
-		  })
+		  });
 		 
 	  $scope.homePage=function(){
 		  if(document.getElementById('login_field').value=="admin" && document.getElementById('password_field').value=="admin"

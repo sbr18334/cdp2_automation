@@ -5,7 +5,7 @@ angular.module('app')
 			url: '/error',	
 			views: {
 	            'error@': {
-	        		template: "<div><br><b>ERROR</b><br><br>Page with the given URL Doesn't exist</div>",
+	        		template: "<div><br><b>ERROR</b><br><br>Page with the given URL Doesn't exist</div><img style='height:80%;margin-top:20px;' src='assets/404.png'>",
 	        		controller: "ErrorController"
 	            }
 	        },

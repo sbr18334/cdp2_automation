@@ -23,11 +23,12 @@ input[type=submit]{
 	margin-top: 20px;
 }
 span{
-	color: white;
+	color: black;
 	font-weight: bold;
 	margin-left: 5px;
 }
 table, th, td  {
+	min-width: 100%;
 	border: 1px solid grey;
 	border-collapse: collapse;
 	padding: 2px 20px 2px 20px;
@@ -37,6 +38,7 @@ table, th, td  {
 	font-size: 14px;
 }
 th{
+	padding: 15px;
 	background-color: #808080;
 	border-bottom: 1px solid white;
 	border-right: 1px solid white;
@@ -48,7 +50,10 @@ table, td{
 	text-align: center;
 	padding: 7px 7px 7px 4px;
 	height: 30px;
-}
+}/*
+tr:nth-child(odd) td{background-color: #E3E3E3;}
+tr:nth-child(even) td{background-color: white;}*/
+
 .fa-spin{
 	font-size: 90px;
 	margin-left: 45%;
@@ -75,10 +80,9 @@ h5{
 	margin-right: 60px;
 	color: black;
 }
-#addButton{
+#addButton1{
 	background-color: #107ABA;
 	margin-left: 5%;
-	padding: 5px 10px 5px 10px; 
 	border-radius: 10px;
 	display: inline;
 	color: white;
@@ -110,23 +114,24 @@ select{
 }
 #month_drpdown{
 	display: inline;
-	margin-left: 35px;
+	margin-left: 75px;
 }
 #proposition_drpdown{
 	display: inline-block;
 }
-#go{
+#go,#go1{
 	cursor: pointer;
 	display: inline-block;
 	border-radius: 60%;
-	background-color: white;
+	background-color: black;
 	padding: 7px;
 	margin-left: 1%;
 }
 #fields_rec{
 	margin-right: 30px;
 	padding: 30px;
-    background: linear-gradient(to right,#898989, #6F6E6E, #494747);
+	/*background-color: #808080;*/
+    /*background: linear-gradient(to right,#615F5F, #3F3E3E, #615F5F);*/
     border-radius: 10px;
 }
 #close{
@@ -135,4 +140,141 @@ select{
 	border-radius: 8px;
 	background-color: white;
 	padding: 6px 3px 6px 3px; 
+}
+#status_filter{
+	margin-bottom: 12px;
+	margin-top: 10px;
+	padding-left: 66%;
+}
+#select_filter{
+    cursor: pointer;
+    margin-right: 3px;
+    width: 125px;
+    padding: 5px;
+    border-radius: 5px;
+}
+#recommendationPage{
+	min-height: 651px;
+	padding-left: 15px;
+}
+.fa-arrow-right{
+	color: white;
+}
+#top{
+	background-color: #107ABA;
+	border-radius: 50%;
+	padding: 10px;
+	color: white;
+	position: fixed;
+	bottom: 15px;
+	right: 20px;
+	cursor: pointer;
+}
+#myBtn{
+	border: 1px solid #107ABA;
+	cursor: pointer;
+    padding: 5px 10px 5px 10px;
+    background-color: #107ABA;
+    color: white;
+    border-radius: 5px;
+}
+#editInfo{
+	margin:30px 0px 30px 40px;
+}
+#error{
+	color: #CA4040;
+}
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    -webkit-animation-name: fadeIn; /* Fade in the background */
+    -webkit-animation-duration: 0.4s;
+    animation-name: fadeIn;
+    animation-duration: 0.4s
+}
+
+/* Modal Content */
+.modal-content {
+    position: fixed;
+    top: 0;
+    background-color: #fefefe;
+    width: 100%;
+    -webkit-animation-name: slideIn;
+    -webkit-animation-duration: 0.4s;
+    animation-name: slideIn;
+    animation-duration: 0.4s
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+input[type="date"]::before {
+	color: #999999;
+	content: attr(placeholder);
+}
+input[type="date"] {
+	color: #ffffff;
+}
+input[type="date"]:focus,
+input[type="date"]:valid {
+	color: #666666;
+}
+input[type="date"]:focus::before,
+input[type="date"]:valid::before {
+	content: "" !important;
+}
+
+/* Add Animation */
+@-webkit-keyframes slideIn {
+    from {top: -300px; opacity: 0} 
+    to {top: 0; opacity: 1}
+}
+
+@keyframes slideIn {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+    from {opacity: 0} 
+    to {opacity: 1}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0} 
+    to {opacity: 1}
 }
