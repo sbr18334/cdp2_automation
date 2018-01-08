@@ -36,4 +36,7 @@ angular.module('app',['ui.router',"uiRouterStyles"])
 		document.location.href = "scripts/login/login.html";
 	}
   //alert($(window).width());
+    if($rootScope.month == null){
+        
+    }
 });

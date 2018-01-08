@@ -96,6 +96,7 @@ public class BenchmarksJdbcConnection extends HttpServlet {
               String ticket = rs.getString("rally_ticket");
               String deadline = rs.getString("deadline");
               String outcome = rs.getString("outcome");
+
               
 
               JSONObject jobj = new JSONObject();
@@ -110,6 +111,7 @@ public class BenchmarksJdbcConnection extends HttpServlet {
               jobj.put("ticket", ticket);
               jobj.put("deadline", deadline);
               jobj.put("outcome", outcome);
+
 
               jArray.add(jobj);
             }

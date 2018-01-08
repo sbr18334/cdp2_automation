@@ -101,6 +101,7 @@
                     <div>
                         <span><b>{{id}}</b></span>
                         <div id="theme_drpdown" style="pointer-events:none">
+
                             <select ng-options="option.name for option in theme.availableOptions track by option.id" ng-model="theme.selectedOption">
                             </select>
                         </div>

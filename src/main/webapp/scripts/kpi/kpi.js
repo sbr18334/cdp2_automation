@@ -223,12 +223,15 @@ angular.module('app')
     }
   });
 
+
+
   $scope.deleteSuggestion = function(index,n){
     //deleting the suggestion
     $(".fa-refresh").show();
     $("#kpi_info").css('opacity','0');
     $("#goedit").hide();
     $("#focus").show();
+
       $http({
           method: 'GET',
           url: '/Redshift',

@@ -8,7 +8,7 @@ angular.module('app')
 
   $("#recommendationPage").hide();
   $(".fa-spin").show();
-
+  
   /////////functionality required/////////////////
   $scope.addRecommendation = function(){
     modal.style.display = "none";
@@ -265,6 +265,7 @@ $(document).scroll(function() {
      $("#top").show();
    }
 });
+
   ////////////////////////////////////////////////
     $http({
           method: 'GET',
@@ -304,7 +305,6 @@ $(document).scroll(function() {
           $scope.proposition_filter[0] = {name: "ALL", id: 0};
           $scope.proposition_filter.selectedOption = $scope.proposition_filter[0];
       });
-
       $scope.init = function(){
       	$http({
       	      method: 'GET',

@@ -54,6 +54,7 @@ table, td{
 tr:nth-child(odd) td{background-color: #E3E3E3;}
 tr:nth-child(even) td{background-color: white;}*/
 
+
 .fa-spin{
 	font-size: 90px;
 	margin-left: 45%;
@@ -132,7 +133,7 @@ select{
 	padding: 30px;
 	/*background-color: #808080;*/
     /*background: linear-gradient(to right,#615F5F, #3F3E3E, #615F5F);*/
-    border-radius: 10px;
+  border-radius: 10px;
 }
 #close{
 	cursor: pointer;
@@ -276,5 +277,4 @@ input[type="date"]:valid::before {
 
 @keyframes fadeIn {
     from {opacity: 0} 
-    to {opacity: 1}
 }
