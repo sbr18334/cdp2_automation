@@ -1,5 +1,5 @@
-<i class="fa fa-spinner fa-spin"></i>
-<i class="fa fa-refresh fa-spin"></i>
+<i class="fa fa-refresh fa-spin spin-1"></i>
+<i class="fa fa-refresh fa-spin spin-2"></i>
 <div id="kpi">
     <div id="prop_title">
         <h1 id="proposition">
@@ -18,15 +18,7 @@
         <div id="slide">
             <div id="view" ng-click="view()">View</div>
             <div id="edit" ng-click="edit()">Edit</div>
-        </div>	
-        <div id="graphs">
-            <div id="draw_pie"></div>
-            <div id="draw_pie1"></div>
-            <div id="draw_pie2"></div>
         </div>
-    </div>
-
-    <div id="kpi_info">
         <div id="table">
             <table>
                 <tr>
@@ -71,13 +63,21 @@
                 <tr>
                     <td style="display: none"></td><td>Buy clicks</td><td>{{metricData_24}}</td><td>{{metricData_25}}</td><td></td>
                 </tr>
-                <tr>
+<!--                 <tr>
                     <td></td><td>CDP2 Recommondations realized/made</td><td>10/24</td><td>+2/+12</td><td></td>
-                </tr>
+                </tr> -->
                 <tr>
                     <td></td><td>Version IOS | Android</td><td colspan="3">30 Month'17(Version 2.2)</td>
                 </tr>
             </table>
+        </div>
+    </div>
+
+    <div id="kpi_info">
+        <div id="graphs">
+            <div id="draw_pie"></div>
+            <div id="draw_pie1"></div>
+            <div id="draw_pie2"></div>
         </div>
         <div id="suggestions">
             <div id="suggestionInfo">
@@ -101,7 +101,6 @@
                     <div>
                         <span><b>{{id}}</b></span>
                         <div id="theme_drpdown" style="pointer-events:none">
-
                             <select ng-options="option.name for option in theme.availableOptions track by option.id" ng-model="theme.selectedOption">
                             </select>
                         </div>
@@ -123,7 +122,7 @@
                     </div>
                 </div>
             </div>
-            <div style="background-color: #D3D3D3;padding: 10px;border-radius: 15px;margin-bottom:1px;" id="add">
+            <div style="background-color: #D3D3D3;padding: 10px;border-radius: 10px;margin-bottom:1px;" id="add">
                 <span style="font-weight:bold;padding-left:10px;" id="sug_info">Suggestions:</span>
                 <div style="background-color:#107ABA;margin-left:55%;padding:5px 10px 5px 10px;border-radius: 10px;display:inline;color:white;cursor:pointer;" id="addButton">
                     <i class="fa fa-plus-circle fa-lg" aria-hidden="true" style="border-radius:50%;"></i>

@@ -1,10 +1,10 @@
 angular.module('app')
 .controller('ReportController',function($scope,$window,$http,$state){
 	
-    $('#tabs div:nth-child(5)').css('background-color','#EAEEE9');
-    $('#tabs div:nth-child(5)').css('color','#107ABA');
-    $('#tabs div:not(:nth-child(5))').css('background-color','#107ABA');
-    $('#tabs div:not(:nth-child(5))').css('color','#EAEEE9');
+    $('#tabs div:nth-child(4)').css('background-color','#EAEEE9');
+    $('#tabs div:nth-child(4)').css('color','#107ABA');
+    $('#tabs div:not(:nth-child(4))').css('background-color','#107ABA');
+    $('#tabs div:not(:nth-child(4))').css('color','#EAEEE9');
 
     $scope.month = {
       availableOptions: [

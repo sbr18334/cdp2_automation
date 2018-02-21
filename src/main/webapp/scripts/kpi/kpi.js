@@ -2,13 +2,14 @@ angular.module('app')
 .controller('KpiController',function($scope,$window,$http,$state,$compile,$rootScope){
 
 /////////////////////////////////functions to be implemented on kpi page load/////////////////////////////////
+  $(".spin-1").show();
+  $(".spin-2").hide();
   $("#kpi").hide();
-  $(".fa-spinner").show();
-  $(".fa-refresh").hide();
   // $scope.$on('$viewContentLoaded', function() {
     $scope.update = function(){
-      $(".fa-refresh").show();
+      $(".spin-2").show();
       $("#kpi_info").css('opacity','0');
+      $("#table").css('opacity','0');
       get($scope.month.selectedOption,$scope.proposition.selectedOption);
     }
 
@@ -39,9 +40,10 @@ angular.module('app')
           $rootScope.proposition = response.data;
           $rootScope.proposition.selectedOption = response.data[0];
           $("#kpi").show();
-          $(".fa-spinner").hide();
-          $(".fa-refresh").show();
+          $(".spin-1").hide();
+          $(".spin-2").show();
           $("#kpi_info").css('opacity','0');
+          $("#table").css('opacity','0');
           if($rootScope.month != null){
             get($rootScope.month.selectedOption,$rootScope.proposition.selectedOption);
           } 
@@ -51,9 +53,10 @@ angular.module('app')
     else{
       get($rootScope.month.selectedOption,$rootScope.proposition.selectedOption);
       $("#kpi").show();
-      $(".fa-spinner").hide();
-      $(".fa-refresh").show();
+      $(".spin-1").hide();
+      $(".spin-2").show();
       $("#kpi_info").css('opacity','0');
+      $("#table").css('opacity','0');
      }
 // });
   function get(a,b){
@@ -65,11 +68,11 @@ angular.module('app')
           method: 'GET',
           url: '/Redshift',
           params: {
-            sql: "SELECT a.ios_1star, a.ios_2star, a.ios_3star, a.ios_4star, a.ios_5star, a.android_1star, a.android_2star, a.android_3star, a.android_4star, a.android_5star, a.total_1star, a.total_2star, a.total_3star, a.total_4star, a.total_5star FROM domo.cdp2semantic.appannie_dataset_av as a inner join domo.cdp2monthlyrpt.months as b on a.month = b.month where b.month_des='"+$scope.month.selectedOption.name+"' and a.proposition='"+$scope.proposition.selectedOption.name+"'",
+            sql: "SELECT a.ios_1star, a.ios_2star, a.ios_3star, a.ios_4star, a.ios_5star, a.android_1star, a.android_2star, a.android_3star, a.android_4star, a.android_5star, a.total_1star, a.total_2star, a.total_3star, a.total_4star, a.total_5star FROM domo.cdp2semantic.appannie_dataset_av as a inner join domo.cdp2monthlyrpt.months as b on a.month = b.month inner join cdp2monthlyrpt.proposition_mapping as c on a.proposition = c.proposition_domo where b.month_des='"+$scope.month.selectedOption.name+"' and c.proposition_recommendation='"+$scope.proposition.selectedOption.name+"'",
             details: "rating"
           }
       }).then(function(response){
-          if(response.data.length == '1'){
+          if(response.data.length >= '1'){
           $scope.ios_1 = response.data[0].ios_1;$scope.android_1 = response.data[0].android_1;$scope.total_1 = response.data[0].total_1;
           $scope.ios_2 = response.data[0].ios_2;$scope.android_2 = response.data[0].android_2;$scope.total_2 = response.data[0].total_2;
           $scope.ios_3 = response.data[0].ios_3;$scope.android_3 = response.data[0].android_3;$scope.total_3 = response.data[0].total_3;
@@ -115,35 +118,36 @@ angular.module('app')
           }
       }).then(function(response){
         if(response.data.length > '0'){
-          $scope.metricData_0 = Math.round(response.data[0].errorrate * 100) / 100;
-          $scope.metricData_1 = Math.round(response.data[0].errorrate_delta * 100) / 100;
-          $scope.metricData_2 = Math.round(response.data[0].crashrate * 100) / 100;
-          $scope.metricData_3 = Math.round(response.data[0].crashrate_delta * 100) / 100;
+          $scope.metricData_0 = (response.data[0].errorrate * 100).toFixed(2).concat("%");
+          $scope.metricData_1 = (response.data[0].errorrate_delta * 100).toFixed(2).concat("%");
+          $scope.metricData_2 = (response.data[0].crashrate * 100).toFixed(2).concat("%");
+          $scope.metricData_3 = (response.data[0].crashrate_delta * 100).toFixed(2).concat("%");
           $scope.metricData_4 = Math.round(response.data[0].firstlaunches * 100) / 100;
-          $scope.metricData_5 = Math.round(response.data[0].firstlaunches_delta * 100) / 100;
+          $scope.metricData_5 = (response.data[0].firstlaunches_delta * 100).toFixed(2).concat("%");
           $scope.metricData_6 = Math.round(response.data[0].total_unique_visitors * 100) / 100;
-          $scope.metricData_7 = Math.round(response.data[0].total_unique_visitors_delta * 100) / 100;
+          $scope.metricData_7 = (response.data[0].total_unique_visitors_delta * 100).toFixed(2).concat("%");
           $scope.metricData_8 = Math.round(response.data[0].thirty_ret_rate_owner * 100) / 100;
-          $scope.metricData_9 = Math.round(response.data[0].thirty_ret_rate_owner_delta * 100) / 100;
+          $scope.metricData_9 = (response.data[0].thirty_ret_rate_owner_delta * 100).toFixed(2).concat("%");
           $scope.metricData_10 = Math.round(response.data[0].thirty_ret_rate * 100) / 100;
-          $scope.metricData_11 = Math.round(response.data[0].thirty_ret_rate_delta * 100) / 100;
+          $scope.metricData_11 = (response.data[0].thirty_ret_rate_delta * 100).toFixed(2).concat("%");
           $scope.metricData_12 = Math.round(response.data[0].ninty_ret_rate * 100) / 100;
-          $scope.metricData_13 = Math.round(response.data[0].ninty_ret_rate_delta * 100) / 100;
+          $scope.metricData_13 = (response.data[0].ninty_ret_rate_delta * 100).toFixed(2).concat("%");
           $scope.metricData_14 = Math.round(response.data[0].avg_weekly_launch_per_user * 100) / 100;
-          $scope.metricData_15 = Math.round(response.data[0].avg_weekly_launch_per_user_delta * 100) / 100;
+          $scope.metricData_15 = (response.data[0].avg_weekly_launch_per_user_delta * 100).toFixed(2).concat("%");
           $scope.metricData_16 = Math.round(response.data[0].engaged * 100) / 100;
-          $scope.metricData_17 = Math.round(response.data[0].engaged_delta * 100) / 100;
+          $scope.metricData_17 = (response.data[0].engaged_delta * 100).toFixed(2).concat("%");
           $scope.metricData_18 = Math.round(response.data[0].total_avg_rating * 100) / 100;
           $scope.metricData_19 = Math.round(response.data[0].total_avg_rating_delta * 100) / 100;
           $scope.metricData_20 = Math.round(response.data[0].mat_avg_product_rating * 100) / 100;
           $scope.metricData_21 = Math.round(response.data[0].mat_avg_product_rating_delta * 100) / 100;
           $scope.metricData_22 = Math.round(response.data[0].marketable_reg_rate * 100) / 100;
-          $scope.metricData_23 = Math.round(response.data[0].marketable_reg_rate_delta * 100) / 100;
+          $scope.metricData_23 = (response.data[0].marketable_reg_rate_delta * 100).toFixed(1).concat("%");
           $scope.metricData_24 = Math.round(response.data[0].buybuttonclicks * 100) / 100;
-          $scope.metricData_25 = Math.round(response.data[0].buybuttonclicks_delta * 100) / 100;
+          $scope.metricData_25 = (response.data[0].buybuttonclicks_delta * 100).toFixed(1).concat("%");
           $("#kpi").show();
           $("#kpi_info").css('opacity','1');
-          $(".fa-refresh").hide();
+          $("#table").css('opacity','1');
+          $(".spin-2").hide();
         }
         else{
           $scope.metricData_0 = $scope.metricData_1 = $scope.metricData_2 = $scope.metricData_3 = 
@@ -155,7 +159,8 @@ angular.module('app')
           $scope.metricData_24 = $scope.metricData_25 = "N/A";
           $("#kpi").show();
           $("#kpi_info").css('opacity','1');
-          $(".fa-refresh").hide();
+          $("#table").css('opacity','1');
+          $(".spin-2").hide();
         }
       })
 
@@ -223,15 +228,12 @@ angular.module('app')
     }
   });
 
-
-
   $scope.deleteSuggestion = function(index,n){
     //deleting the suggestion
-    $(".fa-refresh").show();
+    $(".spin-2").show();
     $("#kpi_info").css('opacity','0');
     $("#goedit").hide();
     $("#focus").show();
-
       $http({
           method: 'GET',
           url: '/Redshift',
@@ -242,7 +244,7 @@ angular.module('app')
       }).then(function(response){
         $('#'+index).remove();
         $("#kpi_info").css('opacity','1');
-        $(".fa-refresh").hide();
+        $(".spin-2").hide();
         alert("deleted succesfully");
       })
   }
@@ -269,7 +271,7 @@ angular.module('app')
   }
 
   $scope.updateSuggestion = function(){
-    $(".fa-refresh").show();
+    $(".spin-2").show();
     $("#kpi_info").css('opacity','0');
     $("#goedit").hide();
     $("#focus").show();
@@ -289,7 +291,7 @@ angular.module('app')
   $scope.addSuggestion = function(){
     //updating the suggestion
 
-    $(".fa-refresh").show();
+    $(".spin-2").show();
     $("#kpi_info").css('opacity','0');
       $http({
           method: 'GET',
@@ -333,24 +335,24 @@ angular.module('app')
 
   ///functions///////
   $scope.edit = function(){
-      $('#graphs').hide();
-      $('#graphs').css('opacity','0');
-      $('#graphs').css('transition','linear 0.5s')
-      $('#edit').css('border-bottom','3px solid green');
-      $('#edit').css('font-weight','bold');
-      $('#view').css('font-weight','normal');
-      $('#view').css('border-bottom','0px');
-      $scope.edit1 = 1;
+    $('#graphs').hide();
+    $('#graphs').css('opacity','0');
+    $('#graphs').css('transition','linear 0.5s')
+    $('#edit').css('border-bottom','3px solid green');
+    $('#edit').css('font-weight','bold');
+    $('#view').css('font-weight','normal');
+    $('#view').css('border-bottom','0px');
+    $scope.edit1 = 1;
   }
   $scope.view = function(){
-  $('#graphs').show();
-  //location.reload();
-  $('#graphs').css('opacity','1');
-  $('#view').css('border-bottom','3px solid green');
-  $('#view').css('font-weight','bold');
-  $('#edit').css('font-weight','normal');
-  $('#edit').css('border-bottom','0px'); 
-  $scope.edit1 = 0;
+    $('#graphs').show();
+    //location.reload();
+    $('#graphs').css('opacity','1');
+    $('#view').css('border-bottom','3px solid green');
+    $('#view').css('font-weight','bold');
+    $('#edit').css('font-weight','normal');
+    $('#edit').css('border-bottom','0px'); 
+    $scope.edit1 = 0;
   }
 
   $http.get('/src/main/webapp/resources/data.json').then(function(response){

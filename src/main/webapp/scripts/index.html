@@ -10,10 +10,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/core.js"></script>
     <script type="text/javascript" src="scripts/app.js"></script>
 	<script type="javascript" src="scripts/home.spec.js"></script>
-    <!-- -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.7.7/xlsx.core.min.js"></script>  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xls/0.7.4-a/xls.core.min.js"></script>  
-    <!-- -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highstock/5.0.14/highstock.js"></script>
 	<script src="http://code.highcharts.com/modules/exporting.js"></script>
@@ -24,8 +20,6 @@
     <script type="text/javascript" src="scripts/kpi/kpi.js"></script>
     <script type="text/javascript" src="scripts/recommendations/recommendations.controller.js"></script>
     <script type="text/javascript" src="scripts/recommendations/recommendations.js"></script>
-    <script type="text/javascript" src="scripts/benchmarks/benchmarks.controller.js"></script>
-    <script type="text/javascript" src="scripts/benchmarks/benchmarks.js"></script>
     <script type="text/javascript" src="scripts/report/report.controller.js"></script>
     <script type="text/javascript" src="scripts/report/report.js"></script>
     <script type="text/javascript" src="scripts/report/usercreate/usercreate.controller.js"></script>
@@ -38,8 +32,9 @@
     <script type="text/javascript" src="scripts/overview/mau/mau.controller.js"></script>
     <script type="text/javascript" src="scripts/overview/scale/scale.js"></script>
     <script type="text/javascript" src="scripts/overview/scale/scale.controller.js"></script>
-    <script type="text/javascript" src="scripts/error/error.controller.js"></script>
-    <script type="text/javascript" src="scripts/error/error.js"></script>
+    <script type="text/javascript" src="https://fastcdn.org/FileSaver.js/1.1.20151003/FileSaver.js"></script>
+    <!--<script type="text/javascript" src="scripts/error/error.controller.js"></script>
+    <script type="text/javascript" src="scripts/error/error.js"></script>-->
 </head>
 <body ng-controller="MainController" ui-router-styles>
 <div id="display">
@@ -65,7 +60,6 @@
     		<div ui-sref="performance">Overview</div>
     		<div ui-sref="kpi">KPI</div>
             <div ui-sref="recommendations">Recommendations</div>
-    		<div ui-sref="benchmarks">Benchmarks</div>
     		<div ui-sref="report">Admin/Report</div>
     	</div>
     	<div id="content" ui-view="content"></div>

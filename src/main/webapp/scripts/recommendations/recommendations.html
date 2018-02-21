@@ -1,27 +1,24 @@
-<i class="fa fa-spinner fa-spin"></i>
+<i class="fa fa-refresh fa-spin"></i>
 <div id="recommendationPage">
 	<div id="head">
 		<div id="new">
-             <div id="addButton1">
-            <!-- Trigger/Open The Modal -->
-            <button id="myBtn">Add Suggestion</button>
-            </div>
-        </div>
-		<div id="count"><h4>Displaying <b>{{length}}</b> Recommendations</h4></div>
-	</div>
-    <div id="status_filter">
-        <span style="color:black;margin-right:10px;font-weight:bold;">Status:</span>
-        <select name="mySelect" id="select_filter"
-          ng-options="option.name for option in status_filter.availableOptions track by option.id"
-          ng-model="status_filter.selectedOption" ng-change="filter()">    
-        </select>
-        <span style="color:black;margin:0px 10px 0px 10px;font-weight:bold;">Proposition:</span>
-        <select name="mySelect" id="mySelect"
-          ng-options="option.name for option in proposition_filter track by option.id"
-          ng-model="proposition_filter.selectedOption" ng-change="filter()">    
-        </select>
-        <!-- <i class="fa fa-filter" aria-hidden="true"></i> -->
+      <div id="addButton1">
+      <button id="myBtn">Add Suggestion</button>
+      </div>
     </div>
+		<div id="count">
+      <h4>Displaying <b>{{length}}</b> Recommendations</h4>
+      <span id="filter_count">({{pcCount}}-Propositions,{{scCount}}-Status&nbsp;are selected)</span>
+      <div id="filterButton" style="background-color:#107ABA;color:white;padding:7px 13px 7px 7px;margin-left:100px;cursor:pointer;border-radius:2px;display:inline-block" ng-click="openFilter()">&nbsp;
+        <i class="fa fa-filter" aria-hidden="true">&nbsp;</i>FILTER
+      </div>
+      <div style="background-color:#107ABA;color:white;padding:7px;cursor:pointer;border-radius:2px;display:inline-block" ng-click="download()">
+        <i class="fa fa-download" aria-hidden="true"></i>
+        <i class="fa fa-spinner fa-spin" style="margin:0px;font-size:16px;"></i>
+      </div>
+    </div>
+  </div>
+
 	<div id="tabledata">
 		<table id="table_rec">
 		    <tr>
@@ -46,7 +43,6 @@
 	</div>
   <div id="top" ng-click="toTop()"><i class="fa fa-arrow-up" aria-hidden="true"></i></div>
 </div>
-
 <!-- The Modal -->
 <div id="myModal" class="modal">
   <!-- Modal content -->
@@ -97,11 +93,10 @@
                 <i class="fa fa-arrow-right" aria-hidden="true"></i>
             </div>
         </div>
-    </div>
+      </div>
     </div>
   </div>
 </div>
-
 <!-- The Modal -->
 <div id="myModal1" class="modal">
   <div class="modal-content">
@@ -134,6 +129,38 @@
             </div>
             <span id="error">Please fill the field</span>
         </div>
+    </div>
+  </div>
+</div>
+<!-- The filter Modal-->
+<div id="myModal2" class="modal">
+  <div class="modal-content" id="modal_content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Filter:</h2>
+    </div>
+    <div class="modal-body">
+      <div id="status_filter">
+        <div style="display:inline-block">
+          <h4 style="color:green;">Proposition:</h4><br>
+          <ul style="margin:0;padding:0;list-style:none">
+            <li><input type="checkbox" id="all" ng-click="toggle(this);" checked="checked"/> <label for="title_1"><strong>ALL</strong></label>
+            <ul style="margin:0;padding:0;list-style:none">
+              <li ng-repeat="i in proposition_filter track by $index"><input type="checkbox" id="pc" name="prop_check" checked="checked"/><label>{{i.name}}</label>
+            </ul>
+          </ul>
+        </div>
+        <div style="display:inline-block;margin-left:30px;">
+          <h4 style="color:green;">Status:</h4><br>
+          <ul style="margin:0;padding:0;list-style:none">
+              <li><input type="checkbox" id="all1" ng-click="toggle(this);" checked="checked"/> <label for="title_1"><strong>ALL</strong></label>
+              <ul style="margin:0;padding:0;list-style:none">
+                <li ng-repeat="i in status_filter.availableOptions"><input type="checkbox" id="sc" name="status_check" checked="checked"/><label>{{i.name}}</label>
+              </ul>
+          </ul>
+        </div>
+          <input type="button" value="FILTER" ng-click="filter()" style="float:right;margin-top:290px;padding:10px 15px 10px 15px;background-color:#0A7017;border:1px solid white;color:white;cursor:pointer;border-radius:5px;">
+      </div>
     </div>
   </div>
 </div>

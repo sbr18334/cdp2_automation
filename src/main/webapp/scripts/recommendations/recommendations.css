@@ -12,6 +12,10 @@ input[type=submit]{
     color: black;
     background-color: silver;
 }
+h4{
+	display: inline;
+	margin-top: 10px;
+}
 #fileupload{
 	padding: 2px 5px 2px 5px;
     color: white;
@@ -54,10 +58,9 @@ table, td{
 tr:nth-child(odd) td{background-color: #E3E3E3;}
 tr:nth-child(even) td{background-color: white;}*/
 
-
 .fa-spin{
-	font-size: 90px;
-	margin-left: 45%;
+	font-size: 60px;
+	margin-left: 50%;
 	margin-top: 15%;
 	margin-bottom:28%;
 }
@@ -75,10 +78,10 @@ h5{
 	display: inline-block;
 }
 #count{
-	margin-top: -5px;
+	margin-top: 15px;
 	display: inline-block;
 	float: right;
-	margin-right: 60px;
+	margin-right: 30px;
 	color: black;
 }
 #addButton1{
@@ -133,7 +136,7 @@ select{
 	padding: 30px;
 	/*background-color: #808080;*/
     /*background: linear-gradient(to right,#615F5F, #3F3E3E, #615F5F);*/
-  border-radius: 10px;
+    border-radius: 10px;
 }
 #close{
 	cursor: pointer;
@@ -143,9 +146,11 @@ select{
 	padding: 6px 3px 6px 3px; 
 }
 #status_filter{
+	border-radius: 5px;
 	margin-bottom: 12px;
 	margin-top: 10px;
-	padding-left: 66%;
+	padding: 20px;
+	color: black;
 }
 #select_filter{
     cursor: pointer;
@@ -174,16 +179,19 @@ select{
 #myBtn{
 	border: 1px solid #107ABA;
 	cursor: pointer;
-    padding: 5px 10px 5px 10px;
+    padding: 7px;
     background-color: #107ABA;
     color: white;
-    border-radius: 5px;
+    /*border-radius: 3px;*/
 }
 #editInfo{
 	margin:30px 0px 30px 40px;
 }
 #error{
 	color: #CA4040;
+}
+#filter_count{
+	color: #107ABA;
 }
 /* The Modal (background) */
 .modal {
@@ -205,10 +213,13 @@ select{
 
 /* Modal Content */
 .modal-content {
+	margin-top: 150px;
     position: fixed;
+    left:200px;
     top: 0;
     background-color: #fefefe;
-    width: 100%;
+    width: 80%;
+    border-radius: 10px;
     -webkit-animation-name: slideIn;
     -webkit-animation-duration: 0.4s;
     animation-name: slideIn;
@@ -234,15 +245,24 @@ select{
     padding: 2px 16px;
     background-color: #5cb85c;
     color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
-.modal-body {padding: 2px 16px;}
+.modal-body {
+	padding: 2px 16px;
+}
 
 .modal-footer {
     padding: 2px 16px;
     background-color: #5cb85c;
     color: white;
 }
+#modal_content{
+	left: 400px;
+	width: 50%;
+}
+
 input[type="date"]::before {
 	color: #999999;
 	content: attr(placeholder);
@@ -277,4 +297,5 @@ input[type="date"]:valid::before {
 
 @keyframes fadeIn {
     from {opacity: 0} 
+    to {opacity: 1}
 }

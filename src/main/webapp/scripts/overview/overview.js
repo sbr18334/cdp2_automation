@@ -9,5 +9,6 @@ angular.module('app')
 
     //functions
     //////
+    $('#content').hide();
 
 });

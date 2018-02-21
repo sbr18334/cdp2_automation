@@ -1,8 +1,11 @@
 angular.module('app')
 .controller('MauOvController',function($scope,$window,$http,$state){
 
-	$('#overview div:nth-child(3)').css('background-color','black');
-	$('#overview div:not(:nth-child(3))').css('background-color','#2C5757');
+  $('#overview div:nth-child(3)').css('background-color','white');
+  $('#overview div:nth-child(3)').css('border-top','3px solid black');
+  $('#overview div:nth-child(3)').css('border-bottom','0px');
+  $('#overview div:not(:nth-child(3))').css('background-color','#f0f0f0');
+  $('#overview div:not(:nth-child(3))').css('border','1px solid #e0e0e0');
 
 	$('#chart').hide();
 	
@@ -48,7 +51,7 @@ angular.module('app')
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'Rainfall (mm)'
+                    text: 'MAU'
                 }
             },
             legend: {
@@ -63,7 +66,7 @@ angular.module('app')
             },
             tooltip: {
                 shared: true,
-                valueSuffix: ' mm'
+                valueSuffix: ''
             },
             plotOptions: {
                 column: {

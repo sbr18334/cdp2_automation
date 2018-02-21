@@ -21,7 +21,7 @@ table tr td:first-child{
 table, td{
 	border:2px solid white;
 	text-align: right;
-	padding: 6px 30px 6px 30px;
+	padding: 7px 30px 7px 30px;
     height:25px;
 }
 tr:nth-child(odd) td{background-color: #D3D3D3;}
@@ -57,11 +57,10 @@ select{/*
 }
 #graphs{
 	display: inline-block;
-	margin-left: 163px;
+	margin-left: 7px;
 }
 #draw_pie{
 	display:inline-block;
-	margin-left: 275px;
 	position: absolute;
 	margin-top: -80px;
 	height: 120px;
@@ -72,7 +71,7 @@ select{/*
 }
 #draw_pie1{
 	display: inline-block;
-	margin-left: 465px;
+	margin-left: 190px;
 	position: absolute;
 	margin-top: -80px;
 	height: 120px;
@@ -83,7 +82,7 @@ select{/*
 }
 #draw_pie2{
 	display: inline-block;
-	margin-left: 655px;
+	margin-left: 380px;
 	position: absolute;
 	margin-top: -80px;
 	height: 120px;
@@ -95,7 +94,7 @@ select{/*
 #data{
 	background-color: #D3D3D3;
 	padding: 10px;
-	border-radius: 15px;
+	border-radius: 10px;
 	max-height: 350px;
 	overflow: auto;
 }
@@ -114,7 +113,7 @@ select{/*
 	display: inline-block;
 	width: 565px;
 	position: absolute;
-	margin: 2px 0px 0px 8px;
+	margin: 45px 0px 0px 8px;
 	height: 20%;
 }
 #month_drpdown{
@@ -152,14 +151,14 @@ select{/*
 	font-size: 24px;
 }
 #prop_title{
-	display: inline;
+	display: inline-block;
 }
 #table{
-	display: inline-block;
-	height: 500px;
+	height: 580px;
+	margin-top: 36px;
 }
 #kpi_info{
-	height: 600px;
+	display: inline-block;
 	margin-top: 35px;
 }
 #suggestionInfo{
@@ -167,7 +166,7 @@ select{/*
 	background-color: #D3D3D3;
 	padding: 10px;
 	margin-bottom: 6px;
-	border-radius: 15px;
+	border-radius: 10px;
 }
 #goedit{
 	margin-top: 3%;
@@ -205,13 +204,14 @@ select{/*
 i:hover{
 	cursor: pointer;
 }
-.fa-spin{
-	font-size: 90px;
-	margin-left: 45%;
+.spin-1{
+	font-size: 60px;
+	margin-left: 50%;
 	margin-top: 15%;
 	margin-bottom: 30%;
 }
-.fa-refresh{
+.spin-2{
+	font-size: 60px;
 	position: fixed;
 	margin-left: 35%;
 	margin-top: 15%;

@@ -48,4 +48,13 @@
 	<url-pattern>/Benchmark</url-pattern>
 </servlet-mapping>
 
+<servlet>
+	<servlet-name>ExcelOutput</servlet-name>
+	<servlet-class>pack.ExcelOutput</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>ExcelOutput</servlet-name>
+	<url-pattern>/Excel</url-pattern>
+</servlet-mapping>
+
 </web-app>

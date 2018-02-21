@@ -22,9 +22,10 @@ h5{
 	margin:4px;
 }
 #chart{
+	opacity: 0;
 	float: right;
 	margin-right: 30px;
-	height: 115px;
+	height: 85px;
 	width: 200px;
 	background-color: #EAEBEE;
 	display: inline-block;
@@ -46,18 +47,15 @@ h5{
 	margin-top: 35px;
 	padding: 10px 20px 10px 20px;
 	background-color: #A9A9A9;
-	color: white;
-	border: 1px solid white;
+	color: black;
+	margin-right: -3.5px;
+	border: 1px solid #e0e0e0;
 	cursor: pointer;
 	transition:all 0.25s;
-	border-radius: 5px;
 }
 #overview div:hover{
-	background-color: black;
-	color: white;
-	/*box-shadow: 2px 2px black;*/
-	border: 1px solid black;
+	color: green;
 }
 #nested{
-	margin: 50px 0px 0px 30px;
+	margin: 40px 0px 0px 30px;
 }

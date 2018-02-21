@@ -6,9 +6,9 @@ angular.module('app')
   $('#tabs div:not(:nth-child(3))').css('background-color','#107ABA');
   $('#tabs div:not(:nth-child(3))').css('color','#EAEEE9');
 
-  $("#recommendationPage").hide();
   $(".fa-spin").show();
-  
+  $("#recommendationPage").hide();
+
   /////////functionality required/////////////////
   $scope.addRecommendation = function(){
     modal.style.display = "none";
@@ -62,11 +62,82 @@ angular.module('app')
 
   ///////////////////filter functionality////////////////////////////////////
 
-  $scope.filter=function(){
-    var input, filter, table, tr, td, i;
+  var modal2 = document.getElementById('myModal2');
+  
+  $scope.openFilter = function(){
+    modal2.style.display = "block";
+  }
 
-    status_input = $scope.status_filter.selectedOption.name;
-    proposition_input = $scope.proposition_filter.selectedOption.name;
+  $('#all').click(function(event) { 
+          if(this.checked) {
+        // Iterate each checkbox
+        $("input[name='prop_check']").each(function() {
+            this.checked = true;                        
+        });
+    }
+    else{
+      $("input[name='prop_check']").each(function() {
+            this.checked = false;                        
+        });
+    }
+  });
+  $('#all1').click(function(event) { 
+          if(this.checked) {
+        // Iterate each checkbox
+        $("input[name='status_check']").each(function() {
+            this.checked = true;                        
+        });
+    }
+    else{
+      $("input[name='status_check']").each(function() {
+            this.checked = false;                        
+        });
+    }
+  });
+
+  $scope.pcCount = 0;
+  $scope.scCount = 0;
+  $('#filter_count').hide();
+
+  // $("input[type='checkbox']#pc").change(function(){
+  //     if($('input#pc').not(':checked').length > 0){
+  //         $('#all').prop('checked', false);
+  //     }
+  // });
+  // $("input[type='checkbox']#sc").change(function(){
+  //     if($('input#sc').not(':checked').length > 0){
+  //         $('#all1').prop('checked', false);
+  //     }
+  // });
+
+  $scope.filter=function(){
+    modal2.style.display = "none";
+
+    $('#filter_count').show();
+    $scope.pcCount = $("input[name='prop_check']:checked").length;
+    $scope.scCount = $("input[name='status_check']:checked").length;
+
+    if($('#all').is(':checked')==true){var proposition_input = 'ALL'}
+    else if($('#all').is(':checked')==false){
+      var proposition_input = "";
+            $("[name='prop_check']").each(function (index, data) {
+                if (data.checked) {
+                    proposition_input = proposition_input.concat(" "+data.nextSibling.textContent);
+                }
+            });
+    }
+
+    if($('#all1').is(':checked')==true){var status_input = 'ALL'}
+    else if($("#all1").is(':checked')==false){
+      var status_input = "";
+            $("[name='status_check']").each(function (index, data) {
+                if (data.checked) {
+                    status_input = status_input.concat(" "+data.nextSibling.textContent);
+                }
+            });
+    }
+
+    var input, filter, table, tr, td, i;
 
     if(status_input != 'ALL' && proposition_input != 'ALL'){
       var count = 0;
@@ -78,7 +149,7 @@ angular.module('app')
         td1 = tr[i].getElementsByTagName("td")[6];
         td2 = tr[i].getElementsByTagName("td")[3];
         if (td1) {
-          if (td1.innerHTML.toUpperCase().indexOf(filter1) > -1 && td2.innerHTML.toUpperCase().indexOf(filter2) > -1) {
+            if (filter1.indexOf(td1.innerHTML.toUpperCase()) > -1 && filter2.indexOf(td2.innerHTML.toUpperCase()) > -1) {
             tr[i].style.display = "";
             count++;
           } else {
@@ -96,7 +167,7 @@ angular.module('app')
       for (i = 0; i < tr.length; i++) {
         td = tr[i].getElementsByTagName("td")[6];
         if (td) {
-          if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          if (filter.indexOf(td.innerHTML.toUpperCase()) > -1) {
             tr[i].style.display = "";
             count++;
           } else {
@@ -114,7 +185,7 @@ angular.module('app')
       for (i = 0; i < tr.length; i++) {
         td = tr[i].getElementsByTagName("td")[3];
         if (td) {
-          if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          if (filter.indexOf(td.innerHTML.toUpperCase()) > -1) {
             tr[i].style.display = "";
             count++;
           } else {
@@ -167,9 +238,8 @@ angular.module('app')
 
   $scope.status_filter = {
     availableOptions: [
-      {id: '0', name: 'ALL'},{id:'1',name: 'Implemented'},{id:'2',name: 'Not Committed'},{id:'3',name: 'In Progress'},{id:'4',name: 'Rejected by business'}
-    ],
-    selectedOption: {id: '0', name: 'ALL'}
+      {id:'1',name: 'Implemented'},{id:'2',name: 'Not Committed'},{id:'3',name: 'In Progress'},{id:'4',name: 'Rejected by business'}
+    ]
   };
 
 //////////////////////////////////////////////////
@@ -183,6 +253,7 @@ var btn = document.getElementById("myBtn");
 // Get the <span> element that closes the modal
 var span1 = document.getElementsByClassName("close")[0];
 var span2 = document.getElementsByClassName("close")[1];
+var span3 = document.getElementsByClassName("close")[2];
 
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
@@ -221,14 +292,20 @@ span1.onclick = function() {
 span2.onclick = function() {
   modal1.style.display = "none";
 }
+span3.onclick = function(){
+  modal2.style.display = "none";
+}
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
-      modal.style.display = "none";
-    }
+    modal.style.display = "none";
+  }
   else if(event.target == modal1){
-      modal1.style.display = "none";
+    modal1.style.display = "none";
+  }
+  else if(event.target == modal2){
+    modal2.style.display = "none";
   }
 }
 
@@ -266,6 +343,19 @@ $(document).scroll(function() {
    }
 });
 
+$scope.download = function(){
+        $('.fa-spinner').show();
+        $('.fa-download').hide();
+        $http({
+          method: 'GET',
+          url: '/Excel',
+          responseType: 'arraybuffer'
+        }).success(function(data){
+          $('.fa-spinner').hide();
+          $('.fa-download').show();
+          saveAs(new Blob([data],{type:"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"}), "excel.xlsx");
+        })
+}
   ////////////////////////////////////////////////
     $http({
           method: 'GET',
@@ -298,13 +388,9 @@ $(document).scroll(function() {
             details: "proposition"
           }
       }).then(function(response){
-          $scope.proposition_filter = [{}];
-          for(i=response.data.length-1;i>0;i--){
-            $scope.proposition_filter[i] = response.data[i-1];
-          }
-          $scope.proposition_filter[0] = {name: "ALL", id: 0};
-          $scope.proposition_filter.selectedOption = $scope.proposition_filter[0];
+        $scope.proposition_filter = response.data;
       });
+
       $scope.init = function(){
       	$http({
       	      method: 'GET',
@@ -321,5 +407,4 @@ $(document).scroll(function() {
       	  })
       }
     $scope.init();
-
 });

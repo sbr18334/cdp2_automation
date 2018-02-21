@@ -80,20 +80,18 @@ body{
 	position: relative;
 	display: inline-block;
 	margin-left: 1%;
-	width:125%;
+	width:165%;
 	color: white;
 }
 #tabs div{
 	display: inline-block;
 	padding:5px 30px 5px 30px;
-	margin-right: 5px;
-	width:12.09%;
+	width:12.25%;
 	font: 24px calibri;
 	text-align: center;
 	cursor: pointer;
-	background-color: #107ABA;
-	border-radius: 10px;
-	box-shadow: 4px 3px 2px black;
+	border-radius: 8px;
+	box-shadow: 1.5px 1.5px 1px black;
 }
 #tabs div:hover{
 	background-color: black;
@@ -101,12 +99,13 @@ body{
 }
 #info{
 	margin: auto;
-	width:1500px;
+	width: 1500px;
 	overflow: hidden;
 }
 #content{
 	background-color: white;
 	width:1450px;
+	min-height: 664px;
 	border-top:2px solid #107ABA;
 	margin: 15px 0px 100px 1.5%;
 }
@@ -188,7 +187,7 @@ body::-webkit-scrollbar-thumb {
 	#info{width:1720px;}
 	#title{margin-left: 460px;}
 	#icons{margin-left:420px;}
-	#tabs{margin-left: 3.5%;width:120%;}
+	#tabs{margin-left: 3.5%;width:158.25%;}
 	#content{width:1570px;margin-left: 4%;}
 	#recommendation #name #perproposition,#recommendation #graphs #block1{width:480px;}
 	#recommendation #name #overtime,#recommendation #graphs #block2{width:1040px;}
@@ -201,7 +200,7 @@ body::-webkit-scrollbar-thumb {
 }
 @media screen and (min-width: 1390px) and (max-width: 1535px) {
 	#philips{margin-left: 95px;}
-    #tabs{margin-left: 2%;width:115%;}
+    #tabs{margin-left: 2%;width:152.5%;}
     #content{margin-left: 2.5%;width:1360px;}
     #title{margin-left:360px;}
     #icons{margin-left:270px;}
@@ -211,7 +210,7 @@ body::-webkit-scrollbar-thumb {
 	#philips{margin-left: 60px;}
 	#title{margin-left: 275px;}
 	#icons{margin-left: 220px;}
-    #tabs{margin-left: 3%;width:1425px;}
+    #tabs{margin-left: 2.5%;width:1910px;}
     #content{margin-left: 3%;width:1180px;}
     #info #content #suggestions{width: 447px;}
     #info #content #slide{margin-left: 80px;}
@@ -228,7 +227,7 @@ body::-webkit-scrollbar-thumb {
 	#philips{margin-left: 60px;}
 	#title{margin-left: 190px;}
 	#icons{margin-left: 110px;}
-	#tabs{margin-left: 2%;width: 1140px;}
+	#tabs{margin-left: 1.5%;width: 1540px;}
 	#content{width: 1008px;margin-left: 1.7%;}
 	#info #content #nested table th,td{font-size: 11px;}
 	#footer{padding-left: 32%;}
